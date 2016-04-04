@@ -18,67 +18,21 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
 <div id="wrapper">
-
-    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Controle de Estoque</a>
-        </div>
-        <!-- Top Menu Items -->
-        <ul class="nav navbar-right top-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user"></i> Vinícius <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Sair</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
-                <li class="active">
-                    <a href="index.html"><i class="fa fa-fw fa-bars"></i> Menu</a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
-                        <i class="fa fa-fw fa-arrows-v"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            </i><a href="cadastra-servidor.php"><i class="fa fa-fw fa-user"></i> Cadastra Servidor</a>
-                        </li>
-                        <li>
-                            </i><a href="cadastra-bolsista.php"><i class="fa fa-fw fa-user"></i> Cadastra Bolsista</a>
-                        </li>
-                        <li>
-                            </i><a href="cadastra-funcionario.php"><i class="fa fa-fw fa-user"></i> Cadastra Funcionário</a>
-                        </li>
-                        <li>
-                            <a href="cadastra-produto.php"><i class="fa fa-fw fa-barcode"></i> Novo Produto</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </nav>
+    <!-- Navigation -->
 
+        <?php include('Views/header.php');?>
+
+        <?php include('Views/menu.php');?>
+
+    </nav>
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -86,132 +40,37 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Almoxarifado <small>Colégio Politécnico - UFSM</small>
-                    </h1>
                     <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
-                        </li>
+                        <li class="active">Início /</li>
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-file-text fa-5x"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Emitir Relatório</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3 ">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" data-toggle="modal" data-target="#modalRealizaPedido">
-                            <div class="panel-footer">
-                                <span class="pull-left">Efetuar Pedido</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
-<!--                <div class="col-lg-3 col-md-6">-->
-<!--                    <div class="panel panel-red">-->
-<!--                        <div class="panel-heading">-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-xs-3">-->
-<!--                                    <i class="fa fa-support fa-5x"></i>-->
-<!--                                </div>-->
-<!--                                <div class="col-xs-9 text-right">-->
-<!--                                    <div class="huge">13</div>-->
-<!--                                    <div>Support Tickets!</div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <a href="#">-->
-<!--                            <div class="panel-footer">-->
-<!--                                <span class="pull-left">View Details</span>-->
-<!--                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
-<!--                                <div class="clearfix"></div>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-shopping-cart fa-2x"></i> Retirar Itens do Estoque</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-area-chart">
-
-                                <div class="input-group">
-                                 <input type="text" class="form-control" placeholder="Digite o Código ou SIAPE ou CPF ou Nome do Funcionário">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Ir!</button>
-                                        </span>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title text-center">Informações</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>Nome Completo:</p>
-                                        <p>CPF:</p>
-                                        <p>Sala/Local de Trabalho:</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-body form-horizontal">
-                                    <div class="form-group">
-                                        <label for="concept" class="col-sm-2 control-label">Nome do Item</label>
-                                        <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="concept" name="concept">
-                                        </div>
-                                        <label for="description" class="col-sm-1 control-label">Quantidade</label>
-                                        <div class="col-sm-2">
-                                            <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="Qtda">
-                                            <button class="btn btn-default">Retirar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <img class="img-responsive center-block" src="logoPoli.png" width="500"/>
+                    <h1 class="text-center" style="font-size: 5em;">
+                        Bem-Vindo!
+                    </h1>
+                    <h3 class="text-center">Almoxarifado <small>Colégio Politécnico - UFSM</small></h3>
                 </div>
-                </div> <!-- / panel preview -->
+                <div class="col-lg-4"></div>
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
 
+             </div> <!-- / panel preview -->
+    </div>
+            <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
 

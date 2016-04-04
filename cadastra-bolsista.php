@@ -58,9 +58,8 @@
                     <a href="index.html"><i class="fa fa-fw fa-bars"></i> Menu</a>
                 </li>
                 <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
-                        <i class="fa fa-fw fa-arrows-v"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
+                    <h3 style="color: white;">Cadastro</h3>
+                    <ul>
                         <li>
                             </i><a href="cadastra-servidor.php"><i class="fa fa-fw fa-user"></i> Cadastra Servidor</a>
                         </li>
@@ -88,22 +87,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Almoxarifado <small>Colégio Politécnico - UFSM</small>
+                        Cadastro de Bolsista
                     </h1>
                     <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
-                        </li>
+                        <li><a href="principal.php">Início</a></li>
+                        <li class="active">Cadastra Bolsista</li>
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Cadastrar Bolsista</h2>
                     <form>
                         <div class="form-group">
-                            <label for="matricula">Código SIAPE</label>
+                            <label for="matricula">Matrícula</label>
                             <input type="text" class="form-control" id="matricula" placeholder="2014510310" name="">
                         </div>
                         <div class="form-group">
