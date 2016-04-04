@@ -4,11 +4,13 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-/* Global Styles */
+/* Global Styles
+http://tympanus.net/Development/HoverEffectIdeas/index2.html
+http://bootsnipp.com/snippets/featured/form-wizard-and-validation
+*/
 
 body {
     margin-top: 100px;
-    background-color: #222;
 }
 
 @media(min-width:768px) {

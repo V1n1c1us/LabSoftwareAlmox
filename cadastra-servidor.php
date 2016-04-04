@@ -1,0 +1,151 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Vinicius
+ * Date: 03/04/2016
+ * Time: 23:49
+ */
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colégio Politécnico - Almox</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Controle de Estoque</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i> Vinícius <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="index.html"><i class="fa fa-fw fa-bars"></i> Menu</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <i class="fa fa-fw fa-arrows-v"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            </i><a href="cadastra-servidor.php"><i class="fa fa-fw fa-user"></i> Cadastra Servidor</a>
+                        </li>
+                        <li>
+                            </i><a href="cadastra-bolsista.php"><i class="fa fa-fw fa-user"></i> Cadastra Bolsista</a>
+                        </li>
+                        <li>
+                            </i><a href="cadastra-funcionario.php"><i class="fa fa-fw fa-user"></i> Cadastra Funcionário</a>
+                        </li>
+                        <li>
+                            <a href="cadastra-produto.php"><i class="fa fa-fw fa-barcode"></i> Novo Produto</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Almoxarifado <small>Colégio Politécnico - UFSM</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Dashboard
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Cadastrar Servidor</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="siape">Código SIAPE</label>
+                            <input type="text" class="form-control" id="siape" placeholder="SIAPE" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomeCompleto">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="CPF" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" class="form-control" id="senha" placeholder="Senha" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="sala">Sala/Bloco</label>
+                            <input type="text" class="form-control" id="sala" placeholder="309/F" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="almox@ufsm.br" name="">
+                        </div>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                    </form>
+                </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3"></div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+<!-- /#wrapper -->
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
+
