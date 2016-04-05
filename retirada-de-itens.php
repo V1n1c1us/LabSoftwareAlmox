@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Vinicius
- * Date: 03/04/2016
- * Time: 23:49
+ * User: 201221584
+ * Date: 05/04/2016
+ * Time: 17:34
  */
 ?>
 
@@ -21,16 +21,14 @@
 </head>
 <body>
 <div id="wrapper">
-
-    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- HEADER -->
-        <?php include('Views/header.php');?>
+        <!-- Navigation -->
 
-        <!-- MENU -->
-        <?php include('Views/menu.php');?>
+        <?php include('Views/header.php'); ?>
+
+        <?php include('Views/menu.php'); ?>
+
     </nav>
-
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -39,11 +37,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        <i class="fa fa-user-plus"></i> Cadastro de Servidor
+                        <i class="fa fa-cart-arrow-down"></i> Retirar Itens
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="principal.php">Início</a></li>
-                        <li class="active">Cadastra Servidor</li>
+                        <li class="active">Retirar Itens</li>
                     </ol>
                 </div>
             </div>
@@ -52,7 +50,7 @@
                 <div class="col-lg-6">
 
                     <!-- FORMULÁRIO -->
-                    <?php include('Views/cadastra-servidor-form.php');?>
+                    <?php include('Views/retirar-itens-form.php');?>
 
                 </div>
                 <div class="col-lg-3"></div>
@@ -62,15 +60,14 @@
         </div>
         <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
-<!-- /#wrapper -->
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/login.js"></script>
 </body>
 </html>
+
 

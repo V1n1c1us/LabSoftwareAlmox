@@ -1,12 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Vinicius
- * Date: 03/04/2016
- * Time: 23:49
+ * User: 201221584
+ * Date: 05/04/2016
+ * Time: 15:22
  */
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,54 +19,42 @@
 
 </head>
 <body>
-<div id="wrapper">
-
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- HEADER -->
-        <?php include('Views/header.php');?>
 
-        <!-- MENU -->
-        <?php include('Views/menu.php');?>
-    </nav>
+    <?php include('Views/header.php'); ?>
 
+    <?php include('Views/menu.php'); ?>
+
+</nav>
+<div id="wrapper">
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        <i class="fa fa-user-plus"></i> Cadastro de Servidor
+                        <i class="fa fa-user-plus"></i> Cadastro de Funcionário
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="principal.php">Início</a></li>
-                        <li class="active">Cadastra Servidor</li>
+                        <li class="active">Cadastra de Funcionário</li>
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
-
-                    <!-- FORMULÁRIO -->
-                    <?php include('Views/cadastra-servidor-form.php');?>
-
+                    <?php include('Views/cadastra-funcionario-form.php'); ?>
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3"></div>
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
 </div>
-<!-- /#page-wrapper -->
-<!-- /#wrapper -->
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/login.js"></script>

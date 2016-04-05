@@ -10,7 +10,7 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li class="active">
-            <a href="index.html" style="font-size: 2em;"><b>Menu</b> <i class="fa fa-cogs fa-1x"></i></a>
+            <a href="principal.php" style="font-size: 2em;"><b>Menu</b> <i class="fa fa-cogs fa-1x"></i></a>
         </li>
         <li>
             <h3 style="color: white;"><b>Cadastro</b></h3>
@@ -19,7 +19,7 @@
                     </i><a href="cadastra-servidor.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Servidor</a>
                 </li>
                 <li>
-                    </i><a href="../cadastra-bolsista.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Bolsista</a>
+                    </i><a href="cadastra-bolsista.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Bolsista</a>
                 </li>
                 <li>
                     </i><a href="cadastra-funcionario.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Funcionário</a>
@@ -34,6 +34,14 @@
             <ul>
                 <li>
                     </i><a href="../cadastra-servidor.php"><i class="fa fa-fw fa-print"></i> Gerar Relatório</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3 style="color: white;"><b>Saída de Produtos</b></h3>
+            <ul>
+                <li>
+                    </i><a href="retirada-de-itens.php"><i class="fa fa-fw fa-cart-arrow-down"></i> Retirar Itens</a>
                 </li>
             </ul>
         </li>
