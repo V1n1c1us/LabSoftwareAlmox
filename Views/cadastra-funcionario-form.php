@@ -8,6 +8,10 @@
 ?>
 <form action="DB/connect.php" method="POST">
     <div class="form-group">
+        <label for="matricula">Matrícula</label>
+        <input type="text" class="form-control" id="matricula" placeholder="Nome Completo" name="">
+    </div>
+    <div class="form-group">
         <label for="nomeCompleto">Nome Completo</label>
         <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo" name="">
     </div>

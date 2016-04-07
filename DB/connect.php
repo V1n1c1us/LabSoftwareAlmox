@@ -7,14 +7,13 @@
  * Time: 23:20
  */
 
-$email = $_POST['email'];
+$login = $_POST['login'];
 $senha = $_POST['senha'];
 
-$emailf = "v@v.com";
+$loginf = "123";
 $senhaf = "123";
 
-if($email == $emailf && $senha == $senhaf){
-
+if($login == $loginf && $senha == $senhaf){
     header("Location: ../principal.php");
 }else{
     header("Location: http://allison.house/404");

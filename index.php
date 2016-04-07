@@ -17,15 +17,28 @@
 
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
+    <script type="text/javascript">
+        $(function(){
 
+            var $btn = $("#logar");
+
+            $("#login, #senha").on('keyup', function(){
+                if ($('#login').is(':valid') && $('#senha').is(':valid')) {
+                    $btn.removeAttr('disabled');
+                } else {
+                    $btn.attr("disabled","disabled");
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <?php include('Views/login.php');?>
+        <?php include('Views/login.php'); ?>
     </div>
 </div>
-
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
