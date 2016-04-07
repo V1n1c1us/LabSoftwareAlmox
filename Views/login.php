@@ -16,6 +16,7 @@
             <input type="email" name="email" id="email" placeholder="Email" class="form-control input-lg"/>
             <input type="password" id="senha" class="form-control input-lg" id="password" placeholder="Password"
                    name="senha"/>
+            <div class="g-recaptcha" data-sitekey="6LeuyBwTAAAAAKYJm09Ream2qk6ecyybj12dv6TJ"></div><br>
             <button type="submit" id="login" name="login" class="btn btn-lg btn-primary btn-block">Entrar
             </button>
             <div>
