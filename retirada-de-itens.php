@@ -18,25 +18,50 @@
     <link rel="stylesheet" href="css/step.css">
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
-
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             var table = $('#tabelaProdutos').DataTable({
                 "language": {
-                    "url": "datatableTraducao.json"
+                    "url": "datatableTraducao.json",
                 },
                 select: {
                     style: 'multi'
                 }
             });
-            $('#enviaDados').click(function () {
+//            $('#enviaDados').click(function () {
+//                table.rows('.selected').each(function() {
+//                    $("#confirmTable tbody").append($(this));
+//                });
+//
+////                var data = table.rows('.selected').data(); // pega a linha selecionada com os dados
+////                $(JSON.stringify(data)).appendTo("#confirmTable tbody");
+////                //alert(JSON.stringify(table.rows('.selected').data()));
+//
+//            });
 
-                var data = table.rows('.selected').data(); // pega a linha selecionada com os dados
-                $(JSON.stringify(data)).appendTo("#confirmTable tbody");
-                //alert(JSON.stringify(table.rows('.selected').data()));
-            });
-
+//            $('#enviaDados').click(function () {
+//                // Remove todas as linhas da tabela de confirmação, pra limpar ela
+//                $("#confirmTable tr").remove(); // Não lembro se assim funciona, acho que sim
+//                var totalItens = 0;
+//                table.rows('.selected').each(function(){	// Passa por todas as linhas selecionadas
+//                    // Pega os dados da linha selecionada atual
+//                    // Nome é a segunda coluna, então pegamos o 2° TD
+//                    var nome = $(this).children("td:nth-child(2)").text();
+//                    //Cria linha nova com os dados que retiramos
+//                    var trNovo = "<tr><td>"+nome+"</td><td>etc</td></tr>"
+//                    // Insere a linha formatada na tabela de confirmação
+//                    $("#confirmTable tbody").append(trNovo);
+//                    // Aumenta quantia de itens selecionados (não sei como tu vai fazer aqui)
+//                    totalItens++;
+//                    // Caso queira o ID, pra armazenar em uma lista e enviar via POST depois
+//                    var idItemSelecionado = $(this).attr("idProduto");
+//                });
+//                // Cria linha que vai exibir o total de itens
+//                $("#confirmTable tbody").append("<tr><td>"+totalItens+"</td></tr>");
+//            });
             var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn'),
@@ -77,19 +102,24 @@
                     nextStepWizard.removeAttr('disabled').trigger('click');
             });
 
-            allPrevBtn.click(function () {
-                var curStep = $(this).closest(".setup-content"),
-                    curStepBtn = curStep.attr("id"),
-                    prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
-                $(".form-group").removeClass("has-error");
-                prevStepWizard.removeAttr('disabled').trigger('click');
-            });
 
             $('div.setup-panel div a.btn-primary').trigger('click');
 
             $('#cancelaPedido').click(function(){
-                alert('Pedido Cancelado');
+
+            });
+
+//            ALERT CANCELA PEDIDO
+            $(document).on("click", "#cancelaPedido", function() {
+                bootbox.alert( {
+                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">Pedido Cancelado</h2>',
+                });
+            });
+//            ALERT CONFIRMA PEDIDO
+            $(document).on("click", "#confimaPedidoOK", function(){
+                bootbox.alert({
+                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+                });
             });
         });
     </script>

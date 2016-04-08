@@ -5,6 +5,7 @@
  * Date: 04/04/2016
  * Time: 00:20
  */
+include('DB/connect.php');
 ?>
 
 <!DOCTYPE html>
