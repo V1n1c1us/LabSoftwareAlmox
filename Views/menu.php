@@ -33,7 +33,7 @@
             <h3 style="color: white;"><b>Relatórios</b></h3>
             <ul>
                 <li>
-                    </i><a href="../cadastra-servidor.php"><i class="fa fa-fw fa-print"></i> Gerar Relatório</a>
+                    </i><a href="gerar-relatorio.php"><i class="fa fa-fw fa-print"></i> Gerar Relatório</a>
                 </li>
             </ul>
         </li>

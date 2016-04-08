@@ -15,7 +15,9 @@
             <img src="logoPoli.png" class="img-responsive" alt=""/>
             <input type="text" name="login" id="login" placeholder="Email" class="form-control input-lg" required/>
             <input type="password" id="senha" class="form-control input-lg" id="senha" placeholder="Password" name="senha" required/>
+
             <div class="g-recaptcha" data-sitekey="6LeuyBwTAAAAAKYJm09Ream2qk6ecyybj12dv6TJ"></div><br>
+
             <button type="submit" id="logar" class="btn btn-lg btn-primary btn-block" disabled>Entrar
             </button>
             <div>

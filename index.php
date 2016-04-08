@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Colégio Politécnico - Almox</title>
-
+    <link href="css/login.css" rel="stylesheet">
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
     <script type="text/javascript">

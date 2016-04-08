@@ -12,5 +12,11 @@
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 
-
+<!-- reCAPTCHA-->
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<!---->
+
+<!--DATA TABLE-->
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
+<!---->
+
