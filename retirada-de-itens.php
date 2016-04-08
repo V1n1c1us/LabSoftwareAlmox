@@ -22,10 +22,19 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#tabelaProdutos').dataTable({
+            var table = $('#tabelaProdutos').DataTable({
                 "language": {
                     "url": "datatableTraducao.json"
+                },
+                select: {
+                    style: 'multi'
                 }
+            });
+            $('#enviaDados').click(function () {
+
+                var data = table.rows('.selected').data(); // pega a linha selecionada com os dados
+                $(JSON.stringify(data)).appendTo("#confirmTable tbody");
+                //alert(JSON.stringify(table.rows('.selected').data()));
             });
 
             var navListItems = $('div.setup-panel div a'),
@@ -78,6 +87,10 @@
             });
 
             $('div.setup-panel div a.btn-primary').trigger('click');
+
+            $('#cancelaPedido').click(function(){
+                alert('Pedido Cancelado');
+            });
         });
     </script>
 </head>
@@ -107,10 +120,11 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="col-md-12">
-                <?php include('Views/retirar-itens-form.php'); ?>
-            </div>
+
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <?php include('Views/retirar-itens-form.php'); ?>
         </div>
     </div>
 

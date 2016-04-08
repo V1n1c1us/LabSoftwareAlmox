@@ -134,7 +134,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" id="enviaDados" type="button">Next</button>
             </div>
         </div>
     </div>
@@ -142,7 +142,8 @@
         <div class="col-xs-12">
             <div class="col-md-12">
                 <h3> Confirmar Itens(s) e Finalizar Pedido</h3>
-                <table class="table table-bordered">
+<!--                --><?php //echo $recebe; ?>
+                <table id="confirmTable" class="table table-bordered">
                     <thead>
                     <tr>
                         <th>Produto</th>
@@ -157,6 +158,7 @@
                         <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
                         <td>Pacote</td>
                         <td>1</td>
+
                     </tr>
                     <tr>
                         <td>4607</td>
@@ -185,7 +187,7 @@
                            placeholder="Senha"/>
                 </div>
                 <button class="btn btn-success btn-lg pull-right" type="button">Confirmar Pedido</button>
-                <button class="btn btn-danger btn-lg pull-left" type="button">Cancelar Pedido</button>
+                <button class="btn btn-danger btn-lg pull-left" id="cancelaPedido" type="button" onclick="cancelarPedido();">Cancelar Pedido</button>
             </div>
         </div>
     </div>

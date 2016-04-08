@@ -20,3 +20,5 @@
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs/jq-2.2.0,dt-1.10.11/datatables.min.js"></script>
 <!---->
 
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.1.2/css/select.dataTables.min.css">
+<script src="https://cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
