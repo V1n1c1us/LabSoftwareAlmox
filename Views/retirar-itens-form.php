@@ -142,18 +142,50 @@
         <div class="col-xs-12">
             <div class="col-md-12">
                 <h3> Confirmar Itens(s) e Finalizar Pedido</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Descrição do Produto</th>
+                        <th>Unidade</th>
+                        <th>Quantidade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>0051</td>
+                        <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
+                        <td>Pacote</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4607</td>
+                        <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
+                        <td>Rolo</td>
+                        <td>1</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th class="text-center"> --- </th>
+                        <th class="text-center"> --- </th>
+                        <th></th>
+                        <th>Total de Iten(s) - 2</th>
+                    </tr>
+                    </tfoot>
+                </table>
                 <div class="form-group">
-                    <label class="control-label">Company Name</label>
+                    <label class="control-label">Login</label>
                     <input type="text" required="required" class="form-control"
-                           placeholder="Enter Company Name"/>
+                           placeholder="Login"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Company Address</label>
+                    <label class="control-label">Senha</label>
                     <input maxlength="200" type="text" required="required" class="form-control"
-                           placeholder="Enter Company Address"/>
+                           placeholder="Senha"/>
                 </div>
-                <button class="btn btn-default prevBtn btn-lg pull-left" type="button">Prev</button>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                <button class="btn btn-success btn-lg pull-right" type="button">Confirmar Pedido</button>
+                <button class="btn btn-danger btn-lg pull-left" type="button">Cancelar Pedido</button>
             </div>
         </div>
     </div>
