@@ -8,7 +8,7 @@
 ?>
 
 
-<form>
+<form method="post" action="funcoes/cadastraUsuario.php?funcao=cadastraBolsista">
     <div class="form-group">
         <label for="matricula">Matrícula</label>
         <input type="text" class="form-control" id="matricula" placeholder="2014510310" name="matricula">
@@ -16,6 +16,10 @@
     <div class="form-group">
         <label for="nomeCompleto">Nome Completo</label>
         <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo" name="nomeusuario">
+    </div>
+    <div class="form-group">
+        <label for="cpf">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="bolsista@bolsa.com" name="email">
     </div>
     <div class="form-group">
         <label for="cpf">CPF</label>
@@ -26,16 +30,17 @@
         <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha">
     </div>
     <div class="form-group">
-        <label for="email">Orientador(a)</label>
+        <label for="orientador">Orientador(a)</label>
 
-        <select class="form-control">
+        <select class="form-control" name="orientador">
             <?php
             include('DB/connect.php');
-            $sql = $con->query("SELECT nomeusuario FROM usuario WHERE orientador = ''");
+            $sql = $con->query("SELECT id, nomeusuario FROM usuario WHERE tipo = 'servidor'");
             while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
+                $id = $linha->id;
                 $nome = $linha->nomeusuario;
                 ?>
-                <option value="<?php echo $nome; ?>"><?php echo $nome; ?></option>
+                <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
                 <?php
             }
             ?>

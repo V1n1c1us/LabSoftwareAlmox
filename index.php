@@ -15,8 +15,8 @@
 
     <title>Colégio Politécnico - Almox</title>
     <link href="css/login.css" rel="stylesheet">
-    <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
+    <?php include('Views/links.php'); ?>
     <script type="text/javascript">
         $(function(){
 

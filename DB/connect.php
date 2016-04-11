@@ -8,6 +8,7 @@
  * http://www.devmedia.com.br/introducao-ao-php-pdo/24973
  */
 
+//conexão com o banco
 $con = new PDO("pgsql:host=200.132.36.197;dbname=dbalmox", "postgres", "cijkd");
 
 
