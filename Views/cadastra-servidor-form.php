@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         <label for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha">
+        <input type="password" class="form-control" id="password" placeholder="Senha" name="senha">
     </div>
     <div class="form-group">
         <label for="sala">Sala/Bloco</label>

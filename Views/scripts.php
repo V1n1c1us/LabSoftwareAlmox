@@ -24,4 +24,5 @@
 <script src="https://cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
 
 
-<!--ALERT API-->
+
+

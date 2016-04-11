@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
         <label for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf" placeholder="CPF" name="cpf">
+        <input type="text" class="form-control" id="cpf" placeholder="999.999.999-99" name="cpf">
     </div>
     <div class="form-group">
         <label for="senha">Senha</label>
@@ -31,16 +31,16 @@
     </div>
     <div class="form-group">
         <label for="orientador">Orientador(a)</label>
-
-        <select class="form-control" name="orientador">
+        <select name="orientador" data-placeholder="Busque o Orientador" class="chosen-select-width">
+            <option selected>...</option>
             <?php
             include('DB/connect.php');
-            $sql = $con->query("SELECT id, nomeusuario FROM usuario WHERE tipo = 'servidor'");
+            $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 'servidor'");
             while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                 $id = $linha->id;
                 $nome = $linha->nomeusuario;
                 ?>
-                <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
+                <option value="<?php echo $nome; ?>"><?php echo $nome; ?></option>
                 <?php
             }
             ?>

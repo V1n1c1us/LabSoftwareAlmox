@@ -18,6 +18,14 @@
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
 
+    <!--Mascaras INPUT-->
+    <script src="js/maskedinput.js"></script>
+    <script>
+        jQuery(function ($) {
+            $("#cpf").mask("999.999.999-99");
+        });
+    </script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -25,10 +33,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- HEADER -->
-        <?php include('Views/header.php');?>
+        <?php include('Views/header.php'); ?>
 
         <!-- MENU -->
-        <?php include('Views/menu.php');?>
+        <?php include('Views/menu.php'); ?>
     </nav>
 
     <div id="page-wrapper">
@@ -52,7 +60,7 @@
                 <div class="col-lg-6">
 
                     <!-- FORMULÁRIO -->
-                    <?php include('Views/cadastra-servidor-form.php');?>
+                    <?php include('Views/cadastra-servidor-form.php'); ?>
 
                 </div>
                 <div class="col-lg-3"></div>
@@ -70,7 +78,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
 </body>
 </html>
 

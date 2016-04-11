@@ -16,6 +16,13 @@
 
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
+    <!--Mascaras INPUT-->
+    <script src="js/maskedinput.js"></script>
+    <script>
+        jQuery(function ($) {
+            $("#cpf").mask("999.999.999-99");
+        });
+    </script>
 
 </head>
 <body>
