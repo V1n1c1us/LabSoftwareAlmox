@@ -149,14 +149,12 @@
                     </ol>
                 </div>
             </div>
+            <?php include('Views/retirar-itens-form.php'); ?>
         </div>
 
     </div>
-    <div class="container">
-        <div class="col-md-12">
-            <?php include('Views/retirar-itens-form.php'); ?>
-        </div>
-    </div>
+
+
 
 </div>
 <!-- /#page-wrapper -->

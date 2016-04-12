@@ -23,7 +23,7 @@
 <form role="form">
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <h3> Buscar Iten(s)</h3>
                 <table id="tabelaProdutos" class="table table-bordered table-responsive" cellspacing="0"
                        cellpadding="0">
@@ -159,8 +159,8 @@
                         <td>1</td>
 
                     </tr>
-                   <tr>
-                       <td>4607</td>
+                    <tr>
+                        <td>4607</td>
                         <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
                         <td>Rolo</td>
                         <td>1</td>
@@ -168,25 +168,34 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th class="text-center"> --- </th>
-                        <th class="text-center"> --- </th>
+                        <th class="text-center"> ---</th>
+                        <th class="text-center"> ---</th>
                         <th></th>
                         <th>Total de Iten(s) - 2</th>
                     </tr>
                     </tfoot>
                 </table>
-                <div class="form-group">
-                    <label class="control-label">Login</label>
-                    <input type="text" required="required" class="form-control"
-                           placeholder="Login"/>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label">Login</label>
+                        <input type="text" required="required" class="form-control"
+                               placeholder="Login"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Senha</label>
+                        <input maxlength="200" type="text" required="required" class="form-control"
+                               placeholder="Senha"/>
+                    </div>
+                    <button class="btn btn-success btn-md pull-left" id="confimaPedidoOK" type="button">Confirmar
+                        Pedido
+                    </button>
+                    <button class="btn btn-danger btn-md pull-right " id="cancelaPedido" type="button">Cancelar Pedido
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Senha</label>
-                    <input maxlength="200" type="text" required="required" class="form-control"
-                           placeholder="Senha"/>
-                </div>
-                <button class="btn btn-success btn-lg pull-right" id="confimaPedidoOK" type="button">Confirmar Pedido</button>
-                <button class="btn btn-danger btn-lg pull-left" id="cancelaPedido" type="button">Cancelar Pedido</button>
+                <div class="col-lg 4"></div>
             </div>
         </div>
     </div>
