@@ -36,6 +36,7 @@
             <?php
             include('DB/connect.php');
             $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 'servidor'");
+
             while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                 $id = $linha->id;
                 $nome = $linha->nomeusuario;

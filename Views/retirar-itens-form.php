@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<form role="form">
+<form role="form" method="post">
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
             <div class="col-lg-12">
@@ -37,10 +37,19 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>6676</td>
-                        <td>ABRACADEIRA ROSCA SEM FIM, 16 A 25MM, 10 X 3/4</td>
-                        <td>Unidade</td>
-                        <td>20,00</td>
+                        <?php
+                        include('DB/connect.php');
+                        $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 'servidor'");
+                        while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
+                            $id = $linha->id;
+                            $nome = $linha->nomeusuario;
+                            ?>
+
+                            <td>?php echo $id; ?></td>
+                            <td><?php echo $nome; ?></td>
+                            <td>Unidade</td>
+                            <td>20,00</td>
+                        <?php } ?>
                     </tr>
                     <tr>
                         <td>6985</td>
@@ -71,66 +80,6 @@
                         <td>PASTA CARTOLINA BRANCA, PADRAO UFSM, P/ SEMINÁRIOS.</td>
                         <td>Rolo</td>
                         <td>500,00</td>
-                    </tr>
-                    <tr>
-                        <td>4607</td>
-                        <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
-                        <td>Rolo</td>
-                        <td>48,00</td>
-                    </tr>
-                    <tr>
-                        <td>0051</td>
-                        <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
-                        <td>Pacote</td>
-                        <td>48,00</td>
-                    </tr>
-                    <tr>
-                        <td>6676</td>
-                        <td>ABRACADEIRA ROSCA SEM FIM, 16 A 25MM, 10 X 3/4</td>
-                        <td>Unidade</td>
-                        <td>20,00</td>
-                    </tr>
-                    <tr>
-                        <td>6985</td>
-                        <td>PASTA CARTOLINA BRANCA, PADRAO UFSM, P/ SEMINÁRIOS.</td>
-                        <td>Rolo</td>
-                        <td>500,00</td>
-                    </tr>
-                    <tr>
-                        <td>4607</td>
-                        <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
-                        <td>Rolo</td>
-                        <td>48,00</td>
-                    </tr>
-                    <tr>
-                        <td>0051</td>
-                        <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
-                        <td>Pacote</td>
-                        <td>48,00</td>
-                    </tr>
-                    <tr>
-                        <td>6676</td>
-                        <td>ABRACADEIRA ROSCA SEM FIM, 16 A 25MM, 10 X 3/4</td>
-                        <td>Unidade</td>
-                        <td>20,00</td>
-                    </tr>
-                    <tr>
-                        <td>6985</td>
-                        <td>PASTA CARTOLINA BRANCA, PADRAO UFSM, P/ SEMINÁRIOS.</td>
-                        <td>Rolo</td>
-                        <td>500,00</td>
-                    </tr>
-                    <tr>
-                        <td>4607</td>
-                        <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
-                        <td>Rolo</td>
-                        <td>48,00</td>
-                    </tr>
-                    <tr>
-                        <td>0051</td>
-                        <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
-                        <td>Pacote</td>
-                        <td>48,00</td>
                     </tr>
                     </tbody>
                 </table>
@@ -138,6 +87,8 @@
             </div>
         </div>
     </div>
+    <button class="btn btn-primary nextBtn pull-right" id="" type="submit">Next</button>
+</form>
     <div class="row setup-content" id="step-2">
         <div class="col-xs-12">
             <div class="col-md-12">
@@ -199,5 +150,5 @@
             </div>
         </div>
     </div>
-</form>
+
 

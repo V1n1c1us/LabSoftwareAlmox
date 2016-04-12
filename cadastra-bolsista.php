@@ -75,11 +75,11 @@ include('DB/connect.php');
 </div>
 <script type="text/javascript">
     var config = {
-        '.chosen-select'           : {placeholder: 'asdasd'},
-        '.chosen-select-deselect'  : {allow_single_deselect:true},
-        '.chosen-select-no-single' : {disable_search_threshold:10},
-        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width'     : {width:"100%"}
+        '.chosen-select': {placeholder: 'asdasd'},
+        '.chosen-select-deselect': {allow_single_deselect: true},
+        '.chosen-select-no-single': {disable_search_threshold: 10},
+        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+        '.chosen-select-width': {width: "100%"}
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
@@ -88,7 +88,6 @@ include('DB/connect.php');
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
 </body>
 </html>
 

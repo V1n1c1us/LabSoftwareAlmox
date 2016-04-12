@@ -5,6 +5,8 @@
  * Date: 05/04/2016
  * Time: 17:34
  */
+
+include('DB/connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +24,11 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+
+        var selected=[];
         $(document).ready(function () {
             var table = $('#tabelaProdutos').DataTable({
+                "processing": true,
                 "language": {
                     "url": "datatableTraducao.json",
                 },
@@ -31,6 +36,16 @@
                     style: 'multi'
                 }
             });
+//            $('#enviaDados').click(function (){
+//                var dataArr = [];
+//                var rows = $('tr.selected');
+//                var rowData = table.rows( rows ).data();
+//                $.each($(rowData),function(key,value){
+//                    dataArr.push(value["id"]);
+//                    dataArr.push(value["nomeusuario"]);
+//                });
+//                console.log(dataArr);
+//            });
 //            $('#enviaDados').click(function () {
 //                table.rows('.selected').each(function() {
 //                    $("#confirmTable tbody").append($(this));
@@ -104,10 +119,6 @@
 
 
             $('div.setup-panel div a.btn-primary').trigger('click');
-
-            $('#cancelaPedido').click(function(){
-
-            });
 
 //            ALERT CANCELA PEDIDO
             $(document).on("click", "#cancelaPedido", function() {
