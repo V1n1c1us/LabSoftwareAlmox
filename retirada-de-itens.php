@@ -25,7 +25,7 @@ include('DB/connect.php');
 
     <script type="text/javascript">
 
-        var selected=[];
+        //var selected=[];
         $(document).ready(function () {
             var table = $('#tabelaProdutos').DataTable({
                 "processing": true,

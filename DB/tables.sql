@@ -1,16 +1,17 @@
 -- TABELA USUARIO
-create table usuario(
-	id serial not null,
-	nomeUsuario varchar(50),
-	siape varchar(20),
-	matricula varchar(20),
-	email varchar(30),
-	orientador varchar(50),
-	cpf varchar(12),
-	tipo varchar(30),
-	senha varchar(30),
-	sala varchar(10),
-	primary key(id),
-	foreign key(id) references usuario(id)
-);
+CREATE TABLE usuario
+(
+  id serial NOT NULL,
+  nomeusuario character varying(50),
+  siape character varying(20),
+  matricula character varying(20),
+  email character varying(30),
+  codorientador int,
+  cpf character varying(12),
+  tipo int,
+  senha character varying(30),
+  sala character varying(10),
+  primary key(id),
+  foreign key (codorientador) references usuario(id)
+  );
 

@@ -39,13 +39,13 @@
                     <tr>
                         <?php
                         include('DB/connect.php');
-                        $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 'servidor'");
+                        $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 1");
                         while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                             $id = $linha->id;
                             $nome = $linha->nomeusuario;
                             ?>
 
-                            <td>?php echo $id; ?></td>
+                            <td><?php echo $id; ?></td>
                             <td><?php echo $nome; ?></td>
                             <td>Unidade</td>
                             <td>20,00</td>
@@ -87,7 +87,6 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-primary nextBtn pull-right" id="" type="submit">Next</button>
 </form>
     <div class="row setup-content" id="step-2">
         <div class="col-xs-12">

@@ -35,7 +35,7 @@
             <option selected>...</option>
             <?php
             include('DB/connect.php');
-            $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 'servidor'");
+            $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 1");
 
             while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                 $id = $linha->id;
