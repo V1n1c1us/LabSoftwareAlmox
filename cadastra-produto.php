@@ -25,6 +25,25 @@ include('funcoes/seguranca.php');
             $("#cpf").mask("999.999.999-99");
         });
     </script>
+    <script type="text/javascript">
+        $(function () {
+            function removeCampo() {
+                $(".removerCampo").unbind("click");
+                $(".removerCampo").bind("click", function () {
+                    if($("tr.linhas").length > 1){
+                        $(this).parent().parent().remove();
+                    }
+                });
+            }
+
+            $(".adicionarCampo").click(function () {
+                novoCampo = $("tr.linhas:first").clone();
+                novoCampo.find("input").val("");
+                novoCampo.insertAfter("tr.linhas:last");
+                removeCampo();
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -54,11 +73,9 @@ include('funcoes/seguranca.php');
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <?php include('Views/cadastra-produto-form.php'); ?>
                 </div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3"></div>
             </div>
         </div>
     </div>
