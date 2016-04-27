@@ -5,6 +5,7 @@
  * Date: 07/04/2016
  * Time: 20:05
  */
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

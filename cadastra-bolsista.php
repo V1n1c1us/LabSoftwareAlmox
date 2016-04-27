@@ -6,6 +6,8 @@
  * Time: 00:20
  */
 include('DB/connect.php');
+session_start();
+include('funcoes/seguranca.php');
 ?>
 
 <!DOCTYPE html>

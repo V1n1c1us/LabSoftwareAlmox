@@ -7,6 +7,8 @@
  */
 
 include('DB/connect.php');
+session_start();
+include('funcoes/seguranca.php');
 ?>
 
 <!DOCTYPE html>

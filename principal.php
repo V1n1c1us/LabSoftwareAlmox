@@ -5,6 +5,8 @@
  * Date: 01/04/2016
  * Time: 15:59
  */
+session_start();
+include('funcoes/seguranca.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +47,7 @@
                     <img class="img-responsive center-block" src="logoPoli.png" width="500"/>
 
                     <h1 class="text-center">
-                        Bem-Vindo!
+                        Bem-Vindo, <?php echo  $_SESSION['nomeusuario'];?>!
                     </h1>
 
                     <h3 class="text-center" style="font-size: 2em; ">Almoxarifado

@@ -5,6 +5,7 @@
  * Date: 01/04/2016
  * Time: 14:57
  */
+include('DB/connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
 </body>
 </html>
 

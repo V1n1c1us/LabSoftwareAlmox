@@ -37,21 +37,6 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <?php
-                        include('DB/connect.php');
-                        $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 1");
-                        while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
-                            $id = $linha->id;
-                            $nome = $linha->nomeusuario;
-                            ?>
-
-                            <td><?php echo $id; ?></td>
-                            <td><?php echo $nome; ?></td>
-                            <td>Unidade</td>
-                            <td>20,00</td>
-                        <?php } ?>
-                    </tr>
-                    <tr>
                         <td>6985</td>
                         <td>PASTA CARTOLINA BRANCA, PADRAO UFSM, P/ SEMINÁRIOS.</td>
                         <td>Rolo</td>

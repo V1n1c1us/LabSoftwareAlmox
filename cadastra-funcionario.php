@@ -5,6 +5,8 @@
  * Date: 05/04/2016
  * Time: 15:22
  */
+session_start();
+include('funcoes/seguranca.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +48,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="principal.php">Início</a></li>
-                        <li class="active">Cadastra de Funcionário</li>
+                        <li class="active">Cadastro de Funcionário</li>
                     </ol>
                 </div>
             </div>

@@ -22,10 +22,23 @@
                     </i><a href="cadastra-bolsista.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Bolsista</a>
                 </li>
                 <li>
-                    </i><a href="cadastra-funcionario.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra Funcionário</a>
+                    </i><a href="cadastra-funcionario.php"><i class="fa fa-fw fa-user-plus"></i> Cadastra
+                        Funcionário</a>
                 </li>
+
+            </ul>
+        </li>
+        <li>
+            <h3 style="color: white;"><b>Entrada de Produtos</b></h3>
+            <ul>
                 <li>
                     <a href="cadastra-produto.php"><i class="fa fa-fw fa-barcode"></i> Novo Produto</a>
+                </li>
+            </ul>
+            <h3 style="color: white;"><b>Saída de Produtos</b></h3>
+            <ul>
+                <li>
+                    </i><a href="retirada-de-itens.php"><i class="fa fa-fw fa-cart-arrow-down"></i> Retirar Itens</a>
                 </li>
             </ul>
         </li>
@@ -34,14 +47,6 @@
             <ul>
                 <li>
                     </i><a href="gerar-relatorio.php"><i class="fa fa-fw fa-print"></i> Gerar Relatório</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <h3 style="color: white;"><b>Saída de Produtos</b></h3>
-            <ul>
-                <li>
-                    </i><a href="retirada-de-itens.php"><i class="fa fa-fw fa-cart-arrow-down"></i> Retirar Itens</a>
                 </li>
             </ul>
         </li>

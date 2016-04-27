@@ -8,9 +8,19 @@
  * http://www.devmedia.com.br/introducao-ao-php-pdo/24973
  */
 
-//conexão com o banco
-$con = new PDO("pgsql:host=200.132.36.197;dbname=dbalmox", "postgres", "cijkd");
+/*** mysql hostname ***/
+$hostname = '200.132.36.197';
+/*** mysql username ***/
+$username = 'postgres';
+/*** mysql password ***/
+$password = 'cijkd';
 
+//conexão com o banco
+//$conn = new PDO("pgsql:host=200.132.36.197;dbname=dbalmox", "postgres", "cijkd");
+
+
+
+$conn = new PDO("pgsql:host=$hostname;dbname=dbalmox", $username, $password);
 
 //$login = $_POST['login'];
 //$senha = $_POST['senha'];

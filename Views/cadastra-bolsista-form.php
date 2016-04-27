@@ -31,17 +31,17 @@
     </div>
     <div class="form-group">
         <label for="orientador">Orientador(a)</label>
-        <select name="orientador" data-placeholder="Busque o Orientador" class="chosen-select-width">
+        <select name="codorientador" data-placeholder="Busque o Orientador" class="chosen-select-width">
             <option selected>...</option>
             <?php
             include('DB/connect.php');
-            $sql = $con->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 1");
+            $sql = $conn->query("SELECT id,nomeusuario FROM usuario WHERE tipo = 1");
 
             while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                 $id = $linha->id;
                 $nome = $linha->nomeusuario;
                 ?>
-                <option value="<?php echo $nome; ?>"><?php echo $nome; ?></option>
+                <option value="<?php echo $id; ?>"><?php echo $nome; ?></option>
                 <?php
             }
             ?>

@@ -2,13 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: Vinicius
- * Date: 03/04/2016
- * Time: 23:49
+ * Date: 26/04/2016
+ * Time: 20:58
  */
 session_start();
 include('funcoes/seguranca.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,67 +18,55 @@ include('funcoes/seguranca.php');
 
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
-
     <!--Mascaras INPUT-->
     <script src="js/maskedinput.js"></script>
-    <script src="js/bootbox.min.js"></script>
     <script>
         jQuery(function ($) {
             $("#cpf").mask("999.999.999-99");
         });
     </script>
+
 </head>
 <body>
-<div id="wrapper">
-
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- HEADER -->
-        <?php include('Views/header.php'); ?>
 
-        <!-- MENU -->
-        <?php include('Views/menu.php'); ?>
-    </nav>
+    <?php include('Views/header.php'); ?>
 
+    <?php include('Views/menu.php'); ?>
+
+</nav>
+<div id="wrapper">
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        <i class="fa fa-user-plus"></i> Cadastro de Servidor
+                        <i class="fa fa-barcode"></i> Cadastro de Produto
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="principal.php">Início</a></li>
-                        <li class="active">Cadastra Servidor</li>
+                        <li class="active">Cadastro de Produto</li>
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
-
-                    <!-- FORMULÁRIO -->
-                    <?php include('Views/cadastra-servidor-form.php'); ?>
-
+                    <?php include('Views/cadastra-produto-form.php'); ?>
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3"></div>
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
 </div>
-<!-- /#page-wrapper -->
-<!-- /#wrapper -->
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
 
