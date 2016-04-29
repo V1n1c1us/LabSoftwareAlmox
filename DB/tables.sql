@@ -15,3 +15,10 @@ CREATE TABLE usuario
   foreign key (codorientador) references usuario(id)
   );
 
+select * from produto,unidade where produto.codunidade = unidade.codunidade
+
+create table unidade(
+	codunidade int,
+	unidade text,
+	primary key(codunidade)
+);
