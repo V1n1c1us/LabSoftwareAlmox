@@ -41,7 +41,7 @@ if ($_GET['funcao'] == 'cadastraServidor') {
     $email = $_POST['email'];
     $tipo = 1; // tipo 1 = servidor
 
-    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,siape,email,cpf,tipo,senha,sala) VALUES (?,?,?,?,?,?,?,?)");
+    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,siape,email,cpf,tipo,senha,sala) VALUES (?,?,?,?,?,?,?)");
     $sqlInsert->bindParam(1, $nomeusuario);
     $sqlInsert->bindParam(2, $siape);
     $sqlInsert->bindParam(3, $email);
@@ -49,7 +49,6 @@ if ($_GET['funcao'] == 'cadastraServidor') {
     $sqlInsert->bindParam(5, $tipo);
     $sqlInsert->bindParam(6, $senha);
     $sqlInsert->bindParam(7, $sala);
-    $sqlInsert->bindParam(8, $cod_orientador);
 
     if ($sqlInsert->execute() == true) {
         echo "<script>alert('Servidor Cadastrado com Sucesso'); window.location='../cadastra-servidor.php';</script>";

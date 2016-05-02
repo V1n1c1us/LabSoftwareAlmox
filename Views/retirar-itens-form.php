@@ -38,6 +38,7 @@
                     <tbody>
                     <?php
                     $sql = $conn->query("SELECT * FROM produto, unidade WHERE produto.codunidade = unidade.codunidade");
+                    //$sql = $conn->query("SELECT * FROM produto");
 
                     while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
                         $codigoProdutoAlmox = $linha->codigoprodutoalmox;
