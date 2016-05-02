@@ -11,29 +11,29 @@ $cpf = $_POST['cpf'];
 $senha = $_POST['senha'];
 
 
-if ($_GET['funcao'] == 'cadastraBolsista') {
-
-    $matricula = $_POST['matricula'];
-    $email = $_POST['email'];
-    $codorientador = $_POST['codorientador'];
-    $tipo = 3;
-
-    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,email,codorientador,cpf,senha,tipo) VALUES (?,?,?,?,?,?,?)");
-    $sqlInsert->bindParam(1, $nomeusuario);
-    $sqlInsert->bindParam(2, $matricula);
-    $sqlInsert->bindParam(3, $email);
-    $sqlInsert->bindParam(4, $codorientador);
-    $sqlInsert->bindParam(5, $cpf);
-    $sqlInsert->bindParam(6, $senha);
-    $sqlInsert->bindParam(7, $tipo);
-
-    if ($sqlInsert->execute() == true) {
-        echo "<script>alert('Bolsista Cadastrado com Sucesso'); window.location='../cadastra-bolsista.php';</script>";
-    } else {
-        echo "<script>alert('Erro ao Cadastrado');</script>";
-    }
-
-}
+//if ($_GET['funcao'] == 'cadastraBolsista') {
+//
+//    $matricula = $_POST['matricula'];
+//    $email = $_POST['email'];
+//    $codorientador = $_POST['codorientador'];
+//    $tipo = 3;
+//
+//    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,email,codorientador,cpf,senha,tipo) VALUES (?,?,?,?,?,?,?)");
+//    $sqlInsert->bindParam(1, $nomeusuario);
+//    $sqlInsert->bindParam(2, $matricula);
+//    $sqlInsert->bindParam(3, $email);
+//    $sqlInsert->bindParam(4, $codorientador);
+//    $sqlInsert->bindParam(5, $cpf);
+//    $sqlInsert->bindParam(6, $senha);
+//    $sqlInsert->bindParam(7, $tipo);
+//
+//    if ($sqlInsert->execute() == true) {
+//        echo "<script>alert('Bolsista Cadastrado com Sucesso'); window.location='../cadastra-bolsista.php';</script>";
+//    } else {
+//        echo "<script>alert('Erro ao Cadastrado');</script>";
+//    }
+//
+//}
 if ($_GET['funcao'] == 'cadastraServidor') {
 
     $siape = $_POST['siape'];
@@ -65,24 +65,24 @@ if ($_GET['funcao'] == 'cadastraServidor') {
 //        "Email: " . $email . "<br>";
 //        "tipo: "  "<br>";
 }
-if($_GET['funcao'] == 'cadastraFuncionario'){
-
-    $matricula = $_POST['matricula'];
-    $tipo = 2;
-
-    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,cpf,senha,tipo) VALUES (?,?,?,?,?)");
-    $sqlInsert->bindParam(1, $nomeusuario);
-    $sqlInsert->bindParam(2, $matricula);
-    $sqlInsert->bindParam(3, $cpf);
-    $sqlInsert->bindParam(4, $senha);
-    $sqlInsert->bindParam(5, $tipo);
-
-    if ($sqlInsert->execute() == true) {
-        echo "<script>alert('Funcionário Cadastrado com Sucesso'); window.location='../cadastra-funcionario.php';</script>";
-    } else {
-        echo "<script>alert('Erro ao Cadastrado');</script>";
-    }
-
-}
+//if($_GET['funcao'] == 'cadastraFuncionario'){
+//
+//    $matricula = $_POST['matricula'];
+//    $tipo = 2;
+//
+//    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,cpf,senha,tipo) VALUES (?,?,?,?,?)");
+//    $sqlInsert->bindParam(1, $nomeusuario);
+//    $sqlInsert->bindParam(2, $matricula);
+//    $sqlInsert->bindParam(3, $cpf);
+//    $sqlInsert->bindParam(4, $senha);
+//    $sqlInsert->bindParam(5, $tipo);
+//
+//    if ($sqlInsert->execute() == true) {
+//        echo "<script>alert('Funcionário Cadastrado com Sucesso'); window.location='../cadastra-funcionario.php';</script>";
+//    } else {
+//        echo "<script>alert('Erro ao Cadastrado');</script>";
+//    }
+//
+//}
 ?>
 
