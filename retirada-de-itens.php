@@ -38,26 +38,57 @@ include('funcoes/seguranca.php');
                     style: 'multi'
                 }
             });
-//            $('#enviaDados').click(function (){
-//                var dataArr = [];
-//                var rows = $('tr.selected');
-//                var rowData = table.rows( rows ).data();
-//                $.each($(rowData),function(key,value){
-//                    dataArr.push(value["id"]);
-//                    dataArr.push(value["nomeusuario"]);
-//                });
-//                console.log(dataArr);
-//            });
-//            $('#enviaDados').click(function () {
-//                table.rows('.selected').each(function() {
-//                    $("#confirmTable tbody").append($(this));
-//                });
-//
-////                var data = table.rows('.selected').data(); // pega a linha selecionada com os dados
-////                $(JSON.stringify(data)).appendTo("#confirmTable tbody");
-////                //alert(JSON.stringify(table.rows('.selected').data()));
-//
-//            });
+
+            $("#tabelaProdutos tbody").on("click","tr", function(){
+                var produto = $(this).find("td:nth-of-type(1)").text();
+                var descricao = $(this).find("td:nth-of-type(2)").text();
+                var unidade = $(this).find("td:nth-of-type(3)").text();
+                var idProduto = $(this).attr("idProduto");
+
+                var trNovo = "<tr idProduto='"+idProduto+"'><td>"+produto+"</td><td>"+descricao+"</td><td>"+unidade+"</td><td><input class='quantidade' type='number' value='1'/></td></tr>"
+                $("#confirmTable tbody").append(trNovo);
+                
+            });
+
+            $('#enviaDados').click(function () {
+
+                var listaProdutos = [];
+                $("#confirmTable tr").each(function(){
+                    var idProduto = $(this).attr("idProduto");
+                    if(idProduto != null){
+                        var p = {};
+                        p.quantidade = parseInt($(this).find(".quantidade").val());
+                        p.idProduto = idProduto;
+                        listaProdutos.push(p);
+                    }
+                });
+
+                $.post("processaPedido.php",{
+                    produtos: listaProdutos, 
+                    tipo: "saida",
+                    login: $("#campoLogin").val(),
+                    senha: $("#campoSenha").val()
+                }, function(data){
+                    try{
+                    var response = $.parseJSON(data);
+
+
+                    if(response.status == "ok"){
+                        bootbox.alert({
+                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+                        });
+                    } else {
+                        bootbox.alert( {
+                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">'+response.msgErro+'</h2>',
+                        });
+                    }
+                } catch(e){
+                    alert(e);
+                    console.log(data);
+                }
+                });
+
+            });
 
 //            $('#enviaDados').click(function () {
 //                // Remove todas as linhas da tabela de confirmação, pra limpar ela
@@ -79,6 +110,7 @@ include('funcoes/seguranca.php');
 //                // Cria linha que vai exibir o total de itens
 //                $("#confirmTable tbody").append("<tr><td>"+totalItens+"</td></tr>");
 //            });
+
             var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn'),

@@ -6,22 +6,9 @@
  * Time: 17:38
  */
 ?>
-<div class="stepwizard">
-    <div class="stepwizard-row setup-panel">
-        <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
 
-            <p>Buscar Iten(s)</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-
-            <p>Confirmar Iten(s) e Finalizar Pedido</p>
-        </div>
-    </div>
-</div>
 <form role="form" method="post">
-    <div class="row setup-content" id="step-1">
+    <div class="row">
         <div class="col-xs-12">
             <div class="col-lg-12">
                 <h3> Buscar Iten(s)</h3>
@@ -41,13 +28,14 @@
                     //$sql = $conn->query("SELECT * FROM produto");
 
                     while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
+                        $idProduto = $linha->idproduto;
                         $codigoProdutoAlmox = $linha->codigoprodutoalmox;
                         $descricaoProduto = $linha->descricaoproduto;
                         $unidade = $linha->unidade;
                         $quantidade = $linha->quantidade;
                         ?>
 
-                        <tr>
+                        <tr idProduto="<?php echo $idProduto;?>" >
                             <td><?php echo $codigoProdutoAlmox;?></td>
                             <td><?php echo $descricaoProduto;?></td>
                             <td><?php echo $unidade;?></td>
@@ -63,7 +51,7 @@
         </div>
     </div>
 </form>
-<div class="row setup-content" id="step-2">
+<div class="row">
     <div class="col-xs-12">
         <div class="col-md-12">
             <h3> Confirmar Itens(s) e Finalizar Pedido</h3>
@@ -77,19 +65,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>0051</td>
-                    <td>PAPEL HIGIÊNICO, FOLHA DUPLA, PCT. C/ 4 ROLOS.</td>
-                    <td>Pacote</td>
-                    <td>1</td>
-
-                </tr>
-                <tr>
-                    <td>4607</td>
-                    <td>PAPEL HIGIÊNICO BRANCO, EM ROLO (ROLÃO), C/300M.</td>
-                    <td>Rolo</td>
-                    <td>1</td>
-                </tr>
                 </tbody>
                 <tfoot>
                 <tr>
