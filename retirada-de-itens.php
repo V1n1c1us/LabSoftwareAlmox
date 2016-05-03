@@ -64,7 +64,7 @@ include('funcoes/seguranca.php');
                 });
 
                 $.post("processaPedido.php",{
-                    produtos: listaProdutos, 
+                    produtos: listaProdutos,
                     tipo: "saida",
                     login: $("#campoLogin").val(),
                     senha: $("#campoSenha").val()
@@ -90,66 +90,6 @@ include('funcoes/seguranca.php');
 
             });
 
-//            $('#enviaDados').click(function () {
-//                // Remove todas as linhas da tabela de confirmação, pra limpar ela
-//                $("#confirmTable tr").remove(); // Não lembro se assim funciona, acho que sim
-//                var totalItens = 0;
-//                table.rows('.selected').each(function(){	// Passa por todas as linhas selecionadas
-//                    // Pega os dados da linha selecionada atual
-//                    // Nome é a segunda coluna, então pegamos o 2° TD
-//                    var nome = $(this).children("td:nth-child(2)").text();
-//                    //Cria linha nova com os dados que retiramos
-//                    var trNovo = "<tr><td>"+nome+"</td><td>etc</td></tr>"
-//                    // Insere a linha formatada na tabela de confirmação
-//                    $("#confirmTable tbody").append(trNovo);
-//                    // Aumenta quantia de itens selecionados (não sei como tu vai fazer aqui)
-//                    totalItens++;
-//                    // Caso queira o ID, pra armazenar em uma lista e enviar via POST depois
-//                    var idItemSelecionado = $(this).attr("idProduto");
-//                });
-//                // Cria linha que vai exibir o total de itens
-//                $("#confirmTable tbody").append("<tr><td>"+totalItens+"</td></tr>");
-//            });
-
-            var navListItems = $('div.setup-panel div a'),
-                allWells = $('.setup-content'),
-                allNextBtn = $('.nextBtn'),
-                allPrevBtn = $('.prevBtn');
-
-            allWells.hide();
-
-            navListItems.click(function (e) {
-                e.preventDefault();
-                var $target = $($(this).attr('href')),
-                    $item = $(this);
-
-                if (!$item.hasClass('disabled')) {
-                    navListItems.removeClass('btn-primary').addClass('btn-default');
-                    $item.addClass('btn-primary');
-                    allWells.hide();
-                    $target.show();
-                    $target.find('input:eq(0)').focus();
-                }
-            });
-
-            allNextBtn.click(function () {
-                var curStep = $(this).closest(".setup-content"),
-                    curStepBtn = curStep.attr("id"),
-                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-                    curInputs = curStep.find("input[type='text'],input[type='url']"),
-                    isValid = true;
-
-                $(".form-group").removeClass("has-error");
-                for (var i = 0; i < curInputs.length; i++) {
-                    if (!curInputs[i].validity.valid) {
-                        isValid = false;
-                        $(curInputs[i]).closest(".form-group").addClass("has-error");
-                    }
-                }
-
-                if (isValid)
-                    nextStepWizard.removeAttr('disabled').trigger('click');
-            });
 
 
             $('div.setup-panel div a.btn-primary').trigger('click');

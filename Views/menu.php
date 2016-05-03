@@ -50,6 +50,14 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <h3 style="color: white;"><b>Lista</b></h3>
+            <ul>
+                <li>
+                    </i><a href="listagem-usuarios.php"><i class="fa fa-fw fa-list"></i> Listar Usuários</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
 <!-- /.navbar-collapse -->

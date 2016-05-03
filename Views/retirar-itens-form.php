@@ -46,7 +46,7 @@
                     ?>
                     </tbody>
                 </table>
-                <button class="btn btn-primary nextBtn pull-right" id="enviaDados" type="button">Next</button>
+                <button class="btn btn-primary nextBtn pull-right" id="" type="button">Next</button>
             </div>
         </div>
     </div>
@@ -82,14 +82,14 @@
                 <div class="form-group">
                     <label class="control-label">Login</label>
                     <input type="text" required="required" class="form-control"
-                           placeholder="Login"/>
+                           placeholder="Login" id="campoLogin" name="login"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Senha</label>
                     <input maxlength="200" type="text" required="required" class="form-control"
-                           placeholder="Senha"/>
+                           placeholder="Senha" id="campoSenha" name="senha"/>
                 </div>
-                <button class="btn btn-success btn-md pull-left" id="confimaPedidoOK" type="button">Confirmar
+                <button class="btn btn-success btn-md pull-left" id="enviaDados" type="button">Confirmar
                     Pedido
                 </button>
                 <button class="btn btn-danger btn-md pull-right " id="cancelaPedido" type="button">Cancelar Pedido
