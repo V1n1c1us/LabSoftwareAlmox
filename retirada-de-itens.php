@@ -45,7 +45,14 @@ include('funcoes/seguranca.php');
                 var unidade = $(this).find("td:nth-of-type(3)").text();
                 var idProduto = $(this).attr("idProduto");
 
-                var trNovo = "<tr idProduto='"+idProduto+"'><td>"+produto+"</td><td>"+descricao+"</td><td>"+unidade+"</td><td><input class='quantidade' type='number' value='1'/></td></tr>"
+                var trNovo = "<tr idProduto='"+idProduto+"'>" +
+                    "<td>"+produto+"</td>" +
+                    "<td>"+descricao+"</td>" +
+                    "<td>"+unidade+"</td>" +
+                    "<td>" +
+                        "<input class='quantidade' type='number' value='1'/>" +
+                    "</td>" +
+                    "</tr>"
                 $("#confirmTable tbody").append(trNovo);
                 
             });
@@ -66,18 +73,21 @@ include('funcoes/seguranca.php');
                 $.post("processaPedido.php",{
                     produtos: listaProdutos,
                     tipo: "saida",
-                    login: $("#campoLogin").val(),
-                    senha: $("#campoSenha").val()
+//                    login: $("#campoLogin").val(),
+//                    senha: $("#campoSenha").val()
                 }, function(data){
                     try{
+                        alert(1);
                     var response = $.parseJSON(data);
-
+                    alert(response);
 
                     if(response.status == "ok"){
+                        alert('IF OK');
                         bootbox.alert({
-                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
                         });
                     } else {
+                        alert('ELSE OK');
                         bootbox.alert( {
                             message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">'+response.msgErro+'</h2>',
                         });

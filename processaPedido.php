@@ -1,19 +1,37 @@
 <?php
-	//$produtos = @$_POST["produtos"];
-	$login = $_POST['login'];
-	$senha = $_POST['senha'];
 
 
-    if($login == 123 && $senha == 123){
-        echo $login;
-        echo $senha;
-        $produtos = @$_POST["produtos"];
-        $response["status"] = "ok";
-    }else{
-        $response["msgErro"] = "Erro na coenxao com o mysql!";
-    }
-echo json_encode($response);
+$produtos = @$_POST['produtos'];
 
+    $response = array();
+    echo $produtos[0]['idProduto'];
+    echo '-';
+    echo $produtos[0]['quantidade'];
+
+    echo '<br>';
+
+    echo $produtos[1]['idProduto'];
+    echo '-';
+    echo $produtos[1]['quantidade'];
+
+    $response["status"] = "ok";
+    echo json_encode($response);
+
+
+
+//	$login = $_POST['login'];
+//	$senha = $_POST['senha'];
+//
+//
+//    if($login == 123 && $senha == 123){
+//        echo $login;
+//        echo $senha;
+//        $produtos = @$_POST["produtos"];
+//        $response["status"] = "ok";
+//    }else{
+//        $response["msgErro"] = "Erro na coenxao com o mysql!";
+//    }
+//echo json_encode($response);
 
 
 //	// $idMovimentacao = criarMovimentacao();
@@ -49,8 +67,6 @@ echo json_encode($response);
 //		$response["status"] = "erro";
 //		$response["msgErro"] = "Credenciais invalidas!";
 //	}
-
-	
 
 
 ?>
