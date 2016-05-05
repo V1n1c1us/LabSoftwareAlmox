@@ -1,21 +1,43 @@
 <?php
 
+include "DB/connect.php";
 
 $produtos = @$_POST['produtos'];
+$login = $_POST['login'];
+$senha = $_POST['senha'];
+$tipo = $_POST['tipo'];
 
-    $response = array();
-    echo $produtos[0]['idProduto'];
-    echo '-';
-    echo $produtos[0]['quantidade'];
+$response = array();
+   // $SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = $login and senha = $senha");
 
-    echo '<br>';
+    if($login == 123 && $senha == 123){
+        $response["status"] = "ok";
+        $response["Produtos"] = $produtos;
+        $response["TIPO:"] = $tipo;
+        $response['debugs'] = "Sim, Debugs";
 
-    echo $produtos[1]['idProduto'];
-    echo '-';
-    echo $produtos[1]['quantidade'];
+        echo json_encode($response);
+    } else {
+        $response["msgErro"] = "Credenciais invalidas!";
+        echo json_encode($response);
+    }
 
-    $response["status"] = "ok";
-    echo json_encode($response);
+
+    //echo json_encode($response);
+
+
+//    echo $produtos[0]['idProduto'];
+//    echo '-';
+//    echo $produtos[0]['quantidade'];
+//
+//    echo '<br>';
+//
+//    echo $produtos[1]['idProduto'];
+//    echo '-';
+//    echo $produtos[1]['quantidade'];
+
+
+
 
 
 

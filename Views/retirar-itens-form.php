@@ -62,6 +62,7 @@
                     <th>Descrição do Produto</th>
                     <th>Unidade</th>
                     <th>Quantidade</th>
+                    <th>Op</th>
                 </tr>
                 </thead>
                 <tbody>

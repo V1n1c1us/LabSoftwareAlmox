@@ -26,7 +26,6 @@ include('funcoes/seguranca.php');
     <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-
         //var selected=[];
         $(document).ready(function () {
             var table = $('#tabelaProdutos').DataTable({
@@ -39,84 +38,102 @@ include('funcoes/seguranca.php');
                 }
             });
 
-            $("#tabelaProdutos tbody").on("click","tr", function(){
+            $("#tabelaProdutos tbody").on("click", "tr", function () {
                 var produto = $(this).find("td:nth-of-type(1)").text();
                 var descricao = $(this).find("td:nth-of-type(2)").text();
                 var unidade = $(this).find("td:nth-of-type(3)").text();
                 var idProduto = $(this).attr("idProduto");
 
-                var trNovo = "<tr idProduto='"+idProduto+"'>" +
-                    "<td>"+produto+"</td>" +
-                    "<td>"+descricao+"</td>" +
-                    "<td>"+unidade+"</td>" +
+                var trNovo =
+                    "<tr idProduto='" + idProduto + "'>" +
+                    "<td class='codigoProduto'>" + produto + "</td>" +
+                    "<td class='descricao'>" + descricao + "</td>" +
+                    "<td class='unidade'>" + unidade + "</td>" +
                     "<td>" +
-                        "<input class='quantidade' type='number' value='1'/>" +
+                    "<input class='quantidade' type='number' value='1'/>" +
                     "</td>" +
+                    "<td> " +
+                    "<button class='btn btn-danger' id='removeItem'><i class='fa fa-remove'></i></button>" +
+                    "</td> " +
                     "</tr>"
                 $("#confirmTable tbody").append(trNovo);
-                
+
             });
 
-            $('#enviaDados').click(function () {
+        $('#removeItem').click( function(){
+  
+        });
 
-                var listaProdutos = [];
-                $("#confirmTable tr").each(function(){
-                    var idProduto = $(this).attr("idProduto");
-                    if(idProduto != null){
-                        var p = {};
-                        p.quantidade = parseInt($(this).find(".quantidade").val());
-                        p.idProduto = idProduto;
-                        listaProdutos.push(p);
-                    }
-                });
 
-                $.post("processaPedido.php",{
-                    produtos: listaProdutos,
-                    tipo: "saida",
-//                    login: $("#campoLogin").val(),
-//                    senha: $("#campoSenha").val()
-                }, function(data){
-                    try{
-                        alert(1);
+
+        $('#enviaDados').click(function () {
+
+            var listaProdutos = [];
+            $("#confirmTable tr").each(function () {
+                var idProduto = $(this).attr("idProduto");
+                if (idProduto != null) {
+                    var p = {};
+                    p.idProduto = idProduto;
+                    p.codigoProduto = $(this).find(".codigoProduto").text();
+                    p.descricao = $(this).find(".descricao").text();
+                    p.unidade = $(this).find(".unidade").text();
+                    p.quantidade = parseInt($(this).find(".quantidade").val());
+                    listaProdutos.push(p);
+                }
+            });
+
+            $.post("processaPedido.php", {
+                produtos: listaProdutos,
+                tipo: "saida",
+                login: $("#campoLogin").val(),
+                senha: $("#campoSenha").val()
+            }, function (data) {
+                try {
+                    console.log("entrou no try");
                     var response = $.parseJSON(data);
-                    alert(response);
 
-                    if(response.status == "ok"){
-                        alert('IF OK');
+                    console.log(response);
+                    console.log(data);
+                    console.log(response.debugs);
+
+                    if (response.status == "ok") {
+                        console.log("IF OK");
                         bootbox.alert({
                             message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
                         });
                     } else {
-                        alert('ELSE OK');
-                        bootbox.alert( {
-                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">'+response.msgErro+'</h2>',
+                        console.log("ELSE OK");
+                        bootbox.alert({
+                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">' + response.msgErro + '</h2>',
                         });
                     }
-                } catch(e){
-                    alert(e);
+                } catch (e) {
+                    // alert(e);
+                    console.log("CAI NO CATCH");
                     console.log(data);
+                    console.log(e);
                 }
-                });
-
             });
 
-
-
-            $('div.setup-panel div a.btn-primary').trigger('click');
-
-//            ALERT CANCELA PEDIDO
-            $(document).on("click", "#cancelaPedido", function() {
-                bootbox.alert( {
-                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">Pedido Cancelado</h2>',
-                });
-            });
-//            ALERT CONFIRMA PEDIDO
-            $(document).on("click", "#confimaPedidoOK", function(){
-                bootbox.alert({
-                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
-                });
-            });
         });
+
+
+        //            $('div.setup-panel div a.btn-primary').trigger('click');
+        //
+        ////            ALERT CANCELA PEDIDO
+        //            $(document).on("click", "#cancelaPedido", function () {
+        //                bootbox.alert({
+        //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">Pedido Cancelado</h2>',
+        //                });
+        //            });
+        ////            ALERT CONFIRMA PEDIDO
+        //            $(document).on("click", "#confimaPedidoOK", function () {
+        //                bootbox.alert({
+        //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+        //                });
+        //            });
+        })
+        ;
     </script>
 </head>
 <body>
@@ -148,7 +165,6 @@ include('funcoes/seguranca.php');
         </div>
 
     </div>
-
 
 
 </div>

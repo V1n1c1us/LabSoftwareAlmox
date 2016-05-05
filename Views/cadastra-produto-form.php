@@ -90,9 +90,6 @@
                 |
                 <a href="#" class="removerCampo btn btn-danger fa fa-remove"></a>
             </td>
-            <!--            </tr>-->
-            <!--                <td align="right" colspan="4"><input type="submit" id="btn-cadastrar" value="Cadastrar"/></td>-->
-            <!--            </tr>-->
     </table>
     <button type="submit" class="btn btn-success">Cadastrar</button>
 </form>
