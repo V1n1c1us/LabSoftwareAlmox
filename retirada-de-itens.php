@@ -61,7 +61,7 @@ include('funcoes/seguranca.php');
             });
 
         $('#removeItem').click( function(){
-  
+
         });
 
 
