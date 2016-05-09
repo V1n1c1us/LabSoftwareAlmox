@@ -8,18 +8,20 @@ $senha = $_POST['senha'];
 $tipo = $_POST['tipo'];
 
 $response = array();
-   // $SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = $login and senha = $senha");
+    $SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
+    $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 
-    if($login == 123 && $senha == 123){
+    if(empty($resultado)){
+        $response["msgErro"] = "Credenciais invalidas!";
+
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    } else {
         $response["status"] = "ok";
         $response["Produtos"] = $produtos;
         $response["TIPO:"] = $tipo;
         $response['debugs'] = "Sim, Debugs";
 
-        echo json_encode($response);
-    } else {
-        $response["msgErro"] = "Credenciais invalidas!";
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
 

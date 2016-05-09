@@ -32,20 +32,19 @@ include('funcoes/seguranca.php');
     <?php include('Views/scripts.php'); ?>
     <script src="js/bootbox.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="funcoes/scriptLista.js"></script>
 
     <script type="text/javascript">
 
         //var selected=[];
         $(document).ready(function () {
-            var table = $('#tabelaProdutos').DataTable({
+            var table = $('#tabelaUsuarios').DataTable({
                 "processing": true,
                 "language": {
                     "url": "datatableTraducao.json",
                 },
-                select: {
-                    style: 'multi'
-                }
             });
+        });
     </script>
 </head>
 <body>
@@ -59,7 +58,6 @@ include('funcoes/seguranca.php');
 
     </nav>
     <div id="page-wrapper">
-
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">

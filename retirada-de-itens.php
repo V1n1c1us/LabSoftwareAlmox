@@ -28,13 +28,13 @@ include('funcoes/seguranca.php');
     <script type="text/javascript">
         //var selected=[];
         $(document).ready(function () {
-            var table = $('#tabelaProdutos').DataTable({
+            var table = $('#tabelaProdutos').DataTable({ // chama o id da tabela e chama o DataTable
                 "processing": true,
                 "language": {
-                    "url": "datatableTraducao.json",
+                    "url": "datatableTraducao.json", // esse JSON é pra traduzir a tabela
                 },
                 select: {
-                    style: 'multi'
+                    style: 'multi' // se refere ao multi select, pra selecionar várias linhas da tabela
                 }
             });
 
