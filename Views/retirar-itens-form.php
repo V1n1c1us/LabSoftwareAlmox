@@ -55,24 +55,25 @@
     <div class="col-xs-12">
         <div class="col-md-12">
             <h3> Confirmar Itens(s) e Finalizar Pedido</h3>
-            <table id="confirmTable" class="table table-bordered">
+            <table id="confirmTable" class="table table-bordered text-center">
                 <thead>
                 <tr>
                     <th>Produto</th>
                     <th>Descrição do Produto</th>
                     <th>Unidade</th>
                     <th>Quantidade</th>
-                    <th>Op</th>
+                    <th><i class="fa fa-cog"></i></th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
-                <tr>
+                <tr class="text-center">
                     <th class="text-center"> ---</th>
                     <th class="text-center"> ---</th>
+                    <th class="text-center"> ---</th>
+                    <th class="text-center">Total de Iten(s) <span id="total"></span> </th>
                     <th></th>
-                    <th>Total de Iten(s) - 2</th>
                 </tr>
                 </tfoot>
             </table>

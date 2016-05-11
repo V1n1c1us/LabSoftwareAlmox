@@ -6,6 +6,7 @@
  * Time: 15:21
  */
 ?>
+
 <form action="funcoes/cadastraUsuario.php?funcao=cadastraFuncionario" method="POST">
     <div class="form-group">
         <label for="matricula">Matrícula</label>

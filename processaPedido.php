@@ -8,20 +8,41 @@ $senha = $_POST['senha'];
 $tipo = $_POST['tipo'];
 
 $response = array();
-    $SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
-    $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
+$SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
+$resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 
-    if(empty($resultado)){
-        $response["msgErro"] = "Credenciais invalidas!";
+if (empty($resultado)) {
+    $response["msgErro"] = "Credenciais invalidas!";
+
+    echo json_encode($response, JSON_PRETTY_PRINT);
+} else {
+    $response["status"] = "ok";
+    $response["Produtos"] = $produtos;
+    $response["TIPO:"] = $tipo;
+    $response['debugs'] = "Sim, Debugs";
+//
+//    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (data,,id,tipo) values (NOW(),?,?)");
+//    $SQLinsert->bindParam(1, $idUsuario);
+//    $SQLinsert->bindParam(2, $tipo);
+//    $SQLinsert->execute();
+//		$response["status"] = "ok";
+//		$response["msgErro"] = "";
+		//$idMovimentacao = $SQLinsert->lastInsertId();
+//
+//    foreach ($_POST["produtos"] as $produto) {
+//        $con->prepare("INSERT INTO Item (idProduto,idMovimentacao,quantidade) values (?,?,?)");
+//        $con->bindParam(1, $produto["idProduto"]);
+//        $con->bindParam(2, $idMovimentacao);
+//        $con->bindParam(3, $produto["quantidade"]);
+//        $con->excute();
+
 
         echo json_encode($response, JSON_PRETTY_PRINT);
-    } else {
-        $response["status"] = "ok";
-        $response["Produtos"] = $produtos;
-        $response["TIPO:"] = $tipo;
-        $response['debugs'] = "Sim, Debugs";
-
-        echo json_encode($response, JSON_PRETTY_PRINT);
+//        //envia email
+//        $_destino = "v.f.diehl@gmail.com";
+//        $_assunto = "Confirmação do Pedido";
+//        $_mensagem = json_encode($response, JSON_PRETTY_PRINT);
+//        mail($_destino, $_assunto, $_mensagem);
     }
 
 
@@ -37,10 +58,6 @@ $response = array();
 //    echo $produtos[1]['idProduto'];
 //    echo '-';
 //    echo $produtos[1]['quantidade'];
-
-
-
-
 
 
 //	$login = $_POST['login'];
@@ -93,4 +110,4 @@ $response = array();
 //	}
 
 
-?>
+    ?>

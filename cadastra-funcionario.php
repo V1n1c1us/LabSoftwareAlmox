@@ -20,12 +20,12 @@ include('funcoes/seguranca.php');
     <?php include('Views/scripts.php'); ?>
     <!--Mascaras INPUT-->
     <script src="js/maskedinput.js"></script>
+    <script src="js/bootbox.min.js"></script>
     <script>
         jQuery(function ($) {
             $("#cpf").mask("999.999.999-99");
         });
     </script>
-
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

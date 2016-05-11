@@ -6,6 +6,7 @@
  * Time: 15:44
  */
 include('../DB/connect.php');
+
 $nomeusuario = $_POST['nomeusuario'];
 $cpf = $_POST['cpf'];
 $senha = $_POST['senha'];

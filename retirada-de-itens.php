@@ -45,95 +45,111 @@ include('funcoes/seguranca.php');
                 var idProduto = $(this).attr("idProduto");
 
                 var trNovo =
-                    "<tr idProduto='" + idProduto + "'>" +
+                    "<tr class='text-center' idProduto='" + idProduto + "'>" +
                     "<td class='codigoProduto'>" + produto + "</td>" +
                     "<td class='descricao'>" + descricao + "</td>" +
                     "<td class='unidade'>" + unidade + "</td>" +
                     "<td>" +
-                    "<input class='quantidade' type='number' value='1'/>" +
+                    "<input class='quantidade' type='number' value='1' onchange='somarTotal();'/>" +
                     "</td>" +
                     "<td> " +
-                    "<button class='btn btn-danger' id='removeItem'><i class='fa fa-remove'></i></button>" +
+                    "<button class='btn btn-danger removeItem' onclick='removeCampo(this);' ><i class='fa fa-remove'></i></button>" +
                     "</td> " +
                     "</tr>"
                 $("#confirmTable tbody").append(trNovo);
+                somarTotal();
 
             });
 
-        $('#removeItem').click( function(){
+            $('.quantidade').change(function(){
 
-        });
-
-
-
-        $('#enviaDados').click(function () {
-
-            var listaProdutos = [];
-            $("#confirmTable tr").each(function () {
-                var idProduto = $(this).attr("idProduto");
-                if (idProduto != null) {
-                    var p = {};
-                    p.idProduto = idProduto;
-                    p.codigoProduto = $(this).find(".codigoProduto").text();
-                    p.descricao = $(this).find(".descricao").text();
-                    p.unidade = $(this).find(".unidade").text();
-                    p.quantidade = parseInt($(this).find(".quantidade").val());
-                    listaProdutos.push(p);
-                }
             });
 
-            $.post("processaPedido.php", {
-                produtos: listaProdutos,
-                tipo: "saida",
-                login: $("#campoLogin").val(),
-                senha: $("#campoSenha").val()
-            }, function (data) {
-                try {
-                    console.log("entrou no try");
-                    var response = $.parseJSON(data);
 
-                    console.log(response);
-                    console.log(data);
-                    console.log(response.debugs);
+            $('#enviaDados').click(function () {
 
-                    if (response.status == "ok") {
-                        console.log("IF OK");
-                        bootbox.alert({
-                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
-                        });
-                    } else {
-                        console.log("ELSE OK");
-                        bootbox.alert({
-                            message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">' + response.msgErro + '</h2>',
-                        });
+                var listaProdutos = [];
+                $("#confirmTable tr").each(function () {
+                    var idProduto = $(this).attr("idProduto");
+                    if (idProduto != null) {
+                        var p = {};
+                        p.idProduto = idProduto;
+                        p.codigoProduto = $(this).find(".codigoProduto").text();
+                        p.descricao = $(this).find(".descricao").text();
+                        p.unidade = $(this).find(".unidade").text();
+                        p.quantidade = parseInt($(this).find(".quantidade").val());
+                        listaProdutos.push(p);
                     }
-                } catch (e) {
-                    // alert(e);
-                    console.log("CAI NO CATCH");
-                    console.log(data);
-                    console.log(e);
-                }
+                });
+
+                $.post("processaPedido.php", {
+                    produtos: listaProdutos,
+                    tipo: "saida",
+                    login: $("#campoLogin").val(),
+                    senha: $("#campoSenha").val()
+                }, function (data) {
+                    try {
+                        console.log("entrou no try");
+                        var response = $.parseJSON(data);
+
+                        console.log(response);
+                        console.log(data);
+                        console.log(response.debugs);
+
+                        if (response.status == "ok") {
+                            console.log("IF OK");
+                            bootbox.alert({
+                                message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+                            });
+                            //window.location="retirada-de-itens.php";
+
+                        } else {
+                            console.log("ELSE OK");
+                            bootbox.alert({
+                                message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">' + response.msgErro + '</h2>',
+                            });
+                          //  window.location='cadastra-produto.php';
+                        }
+                    } catch (e) {
+                        // alert(e);
+                        console.log("CAI NO CATCH");
+                        console.log(data);
+                        console.log(e);
+                    }
+                });
+
             });
 
+
+            //            $('div.setup-panel div a.btn-primary').trigger('click');
+            //
+            ////            ALERT CANCELA PEDIDO
+            //            $(document).on("click", "#cancelaPedido", function () {
+            //                bootbox.alert({
+            //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">Pedido Cancelado</h2>',
+            //                });
+            //            });
+            ////            ALERT CONFIRMA PEDIDO
+            //            $(document).on("click", "#confimaPedidoOK", function () {
+            //                bootbox.alert({
+            //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+            //                });
+            //            });
         });
 
+        function removeCampo(self) {
+            console.log("Apagou um td");
+            $(self).parent().parent().remove();
+        }
+        function somarTotal(){
+            var total = 0;
+            $('.quantidade').each(function () {
+                total += parseInt($(this).val());
+            });
+            $('#total').html(total);
+        }
 
-        //            $('div.setup-panel div a.btn-primary').trigger('click');
-        //
-        ////            ALERT CANCELA PEDIDO
-        //            $(document).on("click", "#cancelaPedido", function () {
-        //                bootbox.alert({
-        //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">Pedido Cancelado</h2>',
-        //                });
-        //            });
-        ////            ALERT CONFIRMA PEDIDO
-        //            $(document).on("click", "#confimaPedidoOK", function () {
-        //                bootbox.alert({
-        //                    message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
-        //                });
-        //            });
-        })
-        ;
+
     </script>
 </head>
 <body>
