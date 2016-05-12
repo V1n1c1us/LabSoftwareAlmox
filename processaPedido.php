@@ -16,19 +16,22 @@ if (empty($resultado)) {
 
     echo json_encode($response, JSON_PRETTY_PRINT);
 } else {
-    $response["status"] = "ok";
-    $response["Produtos"] = $produtos;
-    $response["TIPO:"] = $tipo;
-    $response['debugs'] = "Sim, Debugs";
+//    $response["status"] = "ok";
+//    $response["Produtos"] = $produtos;
+//    $response["TIPO:"] = $tipo;
+//    $response['debugs'] = "Sim, Debugs";
 //
-//    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (data,,id,tipo) values (NOW(),?,?)");
-//    $SQLinsert->bindParam(1, $idUsuario);
-//    $SQLinsert->bindParam(2, $tipo);
-//    $SQLinsert->execute();
-//		$response["status"] = "ok";
-//		$response["msgErro"] = "";
+    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (id,data,tipo) values (?,NOW(),?)");
+    $SQLinsert->bindParam(1, $idUsuario);
+    $SQLinsert->bindParam(2, $tipo);
+    $SQLinsert->execute();
+		$response["status"] = "ok";
+        $response["Produtos"] = $produtos;
+		$response["msgErro"] = "";
 		//$idMovimentacao = $SQLinsert->lastInsertId();
-//
+
+
+
 //    foreach ($_POST["produtos"] as $produto) {
 //        $con->prepare("INSERT INTO Item (idProduto,idMovimentacao,quantidade) values (?,?,?)");
 //        $con->bindParam(1, $produto["idProduto"]);

@@ -140,6 +140,7 @@ include('funcoes/seguranca.php');
         function removeCampo(self) {
             console.log("Apagou um td");
             $(self).parent().parent().remove();
+            somarTotal();
         }
         function somarTotal(){
             var total = 0;

@@ -16,10 +16,10 @@
                        cellpadding="0">
                     <thead>
                     <tr>
-                        <th>Produto</th>
-                        <th>Descrição do Produto</th>
-                        <th>Unidade</th>
-                        <th>Quantidade</th>
+                        <th class="text-center">Produto</th>
+                        <th class="text-center">Descrição do Produto</th>
+                        <th class="text-center">Unidade</th>
+                        <th class="text-center">Quantidade</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,11 +35,18 @@
                         $quantidade = $linha->quantidade;
                         ?>
 
-                        <tr idProduto="<?php echo $idProduto;?>" >
-                            <td><?php echo $codigoProdutoAlmox;?></td>
-                            <td><?php echo $descricaoProduto;?></td>
-                            <td><?php echo $unidade;?></td>
-                            <td><?php echo $quantidade;?></td>
+                        <tr idProduto="<?php echo $idProduto; ?>">
+                            <td class="text-center"><?php echo $codigoProdutoAlmox; ?></td>
+                            <td><?php echo $descricaoProduto; ?></td>
+                            <td class="text-center"><?php echo $unidade; ?></td>
+                            <td class="text-center">
+                                <?php if ($quantidade <= 0) {
+                                    echo '<span class="alert-danger"><b>'. $quantidade .'</b></span>';
+                                } else{
+                                    echo $quantidade;
+                                }
+                                ?>
+                            </td>
                         </tr>
                         <?php
                     }
@@ -58,11 +65,11 @@
             <table id="confirmTable" class="table table-bordered text-center">
                 <thead>
                 <tr>
-                    <th>Produto</th>
-                    <th>Descrição do Produto</th>
-                    <th>Unidade</th>
-                    <th>Quantidade</th>
-                    <th><i class="fa fa-cog"></i></th>
+                    <th class="text-center">Produto</th>
+                    <th class="text-center">Descrição do Produto</th>
+                    <th class="text-center">Unidade</th>
+                    <th class="text-center">Quantidade</th>
+                    <th class="text-center"><i class="fa fa-cog"></i></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,7 +79,7 @@
                     <th class="text-center"> ---</th>
                     <th class="text-center"> ---</th>
                     <th class="text-center"> ---</th>
-                    <th class="text-center">Total de Iten(s) <span id="total"></span> </th>
+                    <th class="text-center">Total de Iten(s) <span id="total"></span></th>
                     <th></th>
                 </tr>
                 </tfoot>
