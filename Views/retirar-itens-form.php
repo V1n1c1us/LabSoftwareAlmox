@@ -91,12 +91,12 @@
                 <div class="form-group">
                     <label class="control-label">Login</label>
                     <input type="text" required="required" class="form-control"
-                           placeholder="Login" id="campoLogin" name="login"/>
+                           placeholder="Login" id="campoLogin" name="login" required/>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Senha</label>
                     <input maxlength="200" type="text" required="required" class="form-control"
-                           placeholder="Senha" id="campoSenha" name="senha"/>
+                           placeholder="Senha" id="campoSenha" name="senha" required/>
                 </div>
                 <button class="btn btn-success btn-md pull-left" id="enviaDados" type="button">Confirmar
                     Pedido

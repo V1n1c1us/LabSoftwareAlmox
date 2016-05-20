@@ -6,8 +6,7 @@
  * Time: 15:22
  */
 session_start();
-include('funcoes/seguranca.php');
-?>
+include('funcoes/seguranca.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

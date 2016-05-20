@@ -8,7 +8,7 @@ $senha = $_POST['senha'];
 $tipo = $_POST['tipo'];
 
 $response = array();
-$SqlSelect = $conn->query("SELECT * FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
+$SqlSelect = $conn->query("SELECT id,matricula,senha FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
 $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 
 if (empty($resultado)) {
@@ -21,35 +21,37 @@ if (empty($resultado)) {
 //    $response["TIPO:"] = $tipo;
 //    $response['debugs'] = "Sim, Debugs";
 //
-    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (id,data,tipo) values (?,NOW(),?)");
-    $SQLinsert->bindParam(1, $idUsuario);
+    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo) values (?,current_timestamp,?)");
+    $SQLinsert->bindParam(1, $login);
     $SQLinsert->bindParam(2, $tipo);
     $SQLinsert->execute();
-		$response["status"] = "ok";
-        $response["Produtos"] = $produtos;
-		$response["msgErro"] = "";
-		//$idMovimentacao = $SQLinsert->lastInsertId();
+    $response["status"] = "ok";
+    $response["Produtos"] = $produtos;
+    $response["msgErro"] = "SUCESSO";
 
+    $SQLultimoId = $conn->query("SELECT CURRVAL('movimentacao_idmovimentacao_seq')");
+    $ultimo_id_movimentacao = $SQLultimoId->fetch(PDO::FETCH_COLUMN);
 
+    foreach ($produtos as $produto) {
+        $SQLinsert = $conn->prepare("INSERT INTO itens (codigoprodutoalmox,idMovimentacao,quantidade,tipo) values (?,?,?,?)");
+        $SQLinsert->bindParam(1, $produto["codigoProduto"]);
+        $SQLinsert->bindParam(2, $ultimo_id_movimentacao);
+        $SQLinsert->bindParam(3, $produto["quantidade"]);
+        $SQLinsert->bindParam(4, $tipo);
+        $SQLinsert->execute();
+        $conn->errorInfo();
+    }
 
-//    foreach ($_POST["produtos"] as $produto) {
-//        $con->prepare("INSERT INTO Item (idProduto,idMovimentacao,quantidade) values (?,?,?)");
-//        $con->bindParam(1, $produto["idProduto"]);
-//        $con->bindParam(2, $idMovimentacao);
-//        $con->bindParam(3, $produto["quantidade"]);
-//        $con->excute();
-
-
-        echo json_encode($response, JSON_PRETTY_PRINT);
+    echo json_encode($response, JSON_PRETTY_PRINT);
 //        //envia email
 //        $_destino = "v.f.diehl@gmail.com";
 //        $_assunto = "Confirmação do Pedido";
 //        $_mensagem = json_encode($response, JSON_PRETTY_PRINT);
 //        mail($_destino, $_assunto, $_mensagem);
-    }
+}
 
 
-    //echo json_encode($response);
+//echo json_encode($response);
 
 
 //    echo $produtos[0]['idProduto'];
@@ -113,4 +115,4 @@ if (empty($resultado)) {
 //	}
 
 
-    ?>
+?>
