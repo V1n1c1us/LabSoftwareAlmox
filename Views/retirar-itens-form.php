@@ -39,11 +39,12 @@
                             <td class="text-center"><?php echo $codigoProdutoAlmox; ?></td>
                             <td><?php echo $descricaoProduto; ?></td>
                             <td class="text-center"><?php echo $unidade; ?></td>
-                            <td class="text-center">
-                                <?php if ($quantidade <= 0) {
-                                    echo '<span class="alert-danger"><b>'. $quantidade .'</b></span>';
+
+                                <?php if ($quantidade <= 5) {
+                                    echo '<td class="text-center alert alert-danger" data-toggle="tooltip" data-placement="top"
+                        title="Estoque Baixo"><b>'. $quantidade .'</b></td>';
                                 } else{
-                                    echo $quantidade;
+                                    echo '<td class="text-center"><b>'. $quantidade .'</b></td>';
                                 }
                                 ?>
                             </td>
@@ -108,5 +109,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
 

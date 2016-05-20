@@ -28,9 +28,7 @@ if (empty($resultado)) {
     $SQLinsert->bindParam(1, $login);
     $SQLinsert->bindParam(2, $tipo);
     $SQLinsert->execute();
-    $response["status"] = "ok";
-    $response["Produtos"] = $produtos;
-    $response["msgErro"] = "SUCESSO";
+
 
     $SQLultimoId = $conn->query("SELECT CURRVAL('movimentacao_idmovimentacao_seq')");
     $ultimo_id_movimentacao = $SQLultimoId->fetch(PDO::FETCH_COLUMN);
@@ -44,13 +42,19 @@ if (empty($resultado)) {
         $SQLinsert->execute();
         $conn->errorInfo();
 
-        $SQLUpdate = $conn->prepare("UPDATE produto SET quantidade = quantidade - ? WHERE codigoprodutoalmox = ?)");
-        $SQLUpdate->bindParam(1, $produto["quantidade"]);
-        $SQLUpdate->bindParam(2,$produto["codigoProduto"]);
-        $SQLUpdate->execute();
+        $SQLUpdate = "UPDATE produto SET quantidade = quantidade - ".$produto["quantidade"]." WHERE codigoprodutoalmox = ".$produto["codigoProduto"]."";
+        $stmt = $conn->prepare($SQLUpdate);
+        $stmt->execute();
+
+        //$SQLUpdate = $conn->prepare("UPDATE produto SET quantidade = quantidade - 1 WHERE codigoprodutoalmox = 66)");
+//        $SQLUpdate->bindParam(1, $produto["quantidade"]);
+//        $SQLUpdate->bindParam(2,$produto["codigoProduto"]);
+        //$SQLUpdate->execute();
         $conn->errorInfo();
     }
-
+    $response["status"] = "ok";
+    $response["Produtos"] = $produtos;
+    $response["msgErro"] = "SUCESSO";
     echo json_encode($response, JSON_PRETTY_PRINT);
 //        //envia email
 //        $_destino = "v.f.diehl@gmail.com";
