@@ -59,10 +59,17 @@
                 <input type="number" class="form-control" name="quantidade[]" style="text-align:center"/>
             </td>
             <td>
-                <a href="#" class="adicionarCampo btn btn-success fa fa-plus"></a>
+                <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top"
+                        title="Cadastrar Item">Cadastrar
+                </button>
                 |
                 <a href="#" class="removerCampo btn btn-danger fa fa-remove"></a>
             </td>
     </table>
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <a href="#" class="adicionarCampo btn btn-info" data-toggle="tooltip">Inserir Novo Item</a>
 </form>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>

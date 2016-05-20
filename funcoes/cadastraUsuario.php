@@ -19,6 +19,9 @@ if ($_GET['funcao'] == 'cadastraBolsista') {
     $codorientador = $_POST['codorientador'];
     $tipo = 3;
 
+    //inicio da transação
+    $conn->beginTransaction();
+
     $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,email,codorientador,cpf,senha,tipo) VALUES (?,?,?,?,?,?,?)");
     $sqlInsert->bindParam(1, $nomeusuario);
     $sqlInsert->bindParam(2, $matricula);
@@ -29,8 +32,12 @@ if ($_GET['funcao'] == 'cadastraBolsista') {
     $sqlInsert->bindParam(7, $tipo);
 
     if ($sqlInsert->execute() == true) {
+        //transação ok? commit!
+        $conn->commit();
         echo "<script>alert('Bolsista Cadastrado com Sucesso'); window.location='../cadastra-bolsista.php';</script>";
     } else {
+        //transação ok? não? desfaz!
+        $conn->rollBack();
         echo "<script>alert('Erro ao Cadastrado');</script>";
     }
 
@@ -42,6 +49,9 @@ if ($_GET['funcao'] == 'cadastraServidor') {
     $email = $_POST['email'];
     $tipo = 1; // tipo 1 = servidor
 
+    //inicio da transação
+    $conn->beginTransaction();
+
     $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,siape,email,cpf,tipo,senha,sala) VALUES (?,?,?,?,?,?,?)");
     $sqlInsert->bindParam(1, $nomeusuario);
     $sqlInsert->bindParam(2, $siape);
@@ -52,24 +62,22 @@ if ($_GET['funcao'] == 'cadastraServidor') {
     $sqlInsert->bindParam(7, $sala);
 
     if ($sqlInsert->execute() == true) {
+        //transação ok? commit!
+        $conn->commit();
         echo "<script>alert('Servidor Cadastrado com Sucesso'); window.location='../cadastra-servidor.php';</script>";
     } else {
+        //transação ok? não? desfaz!
+        $conn->rollBack();
         echo "<script>alert('Erro ao Cadastrado');</script>";
     }
-
-
-//    echo "SIAPE: " . $siape . "<br>" .
-//        "Nome: " . $nomeusuario . "<br>" .
-//        "CPF: " . $cpf . "<br>" .
-//        "SENHA: " . $senha . "<br>".
-//        "Sala" . $sala . "<br>";
-//        "Email: " . $email . "<br>";
-//        "tipo: "  "<br>";
 }
-if($_GET['funcao'] == 'cadastraFuncionario'){
+if ($_GET['funcao'] == 'cadastraFuncionario') {
 
     $matricula = $_POST['matricula'];
     $tipo = 2;
+
+    //inicio da transação
+    $conn->beginTransaction();
 
     $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,cpf,senha,tipo) VALUES (?,?,?,?,?)");
     $sqlInsert->bindParam(1, $nomeusuario);
@@ -79,8 +87,12 @@ if($_GET['funcao'] == 'cadastraFuncionario'){
     $sqlInsert->bindParam(5, $tipo);
 
     if ($sqlInsert->execute() == true) {
+        //transação ok? commit!
+        $conn->commit();
         echo "<script>alert('Funcionário Cadastrado com Sucesso'); window.location='../cadastra-funcionario.php';</script>";
     } else {
+        //transação ok? não? desfaz!
+        $conn->rollBack();
         echo "<script>alert('Erro ao Cadastrado');</script>";
     }
 

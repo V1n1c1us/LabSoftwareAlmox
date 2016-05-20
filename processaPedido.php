@@ -21,6 +21,9 @@ if (empty($resultado)) {
 //    $response["TIPO:"] = $tipo;
 //    $response['debugs'] = "Sim, Debugs";
 //
+    //inicio da transação
+
+
     $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo) values (?,current_timestamp,?)");
     $SQLinsert->bindParam(1, $login);
     $SQLinsert->bindParam(2, $tipo);
@@ -39,6 +42,12 @@ if (empty($resultado)) {
         $SQLinsert->bindParam(3, $produto["quantidade"]);
         $SQLinsert->bindParam(4, $tipo);
         $SQLinsert->execute();
+        $conn->errorInfo();
+
+        $SQLUpdate = $conn->prepare("UPDATE produto SET quantidade = quantidade - ? WHERE codigoprodutoalmox = ?)");
+        $SQLUpdate->bindParam(1, $produto["quantidade"]);
+        $SQLUpdate->bindParam(2,$produto["codigoProduto"]);
+        $SQLUpdate->execute();
         $conn->errorInfo();
     }
 
