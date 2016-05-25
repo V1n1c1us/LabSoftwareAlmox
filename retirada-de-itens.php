@@ -61,7 +61,7 @@ include('funcoes/seguranca.php');
 
             });
 
-            $('.quantidade').change(function(){
+            $('.quantidade').change(function () {
 
             });
 
@@ -101,14 +101,14 @@ include('funcoes/seguranca.php');
                             bootbox.alert({
                                 message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
                             });
-                            //window.location="retirada-de-itens.php";
+
 
                         } else {
                             console.log("ELSE OK");
                             bootbox.alert({
                                 message: '<center><img src="logoPoli.png" width="100px"/></center><br/> <h2 class="alert alert-danger text-center">' + response.msgErro + '</h2>',
                             });
-                          //  window.location='cadastra-produto.php';
+                            //  window.location='cadastra-produto.php';
                         }
                     } catch (e) {
                         // alert(e);
@@ -142,7 +142,7 @@ include('funcoes/seguranca.php');
             $(self).parent().parent().remove();
             somarTotal();
         }
-        function somarTotal(){
+        function somarTotal() {
             var total = 0;
             $('.quantidade').each(function () {
                 total += parseInt($(this).val());
