@@ -48,10 +48,13 @@ session_start();
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-
                     <!-- FORMULÁRIO -->
                     <?php include('Views/relatorio-form.php'); ?>
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="dados">Aqui aparece os dados da busca...</div>
                 </div>
             </div>
             <!-- /.row -->
@@ -61,7 +64,27 @@ session_start();
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
-
+<script>
+    function buscar(nome) {
+        var pagina = "relatorio-form.php";
+        $.ajax
+        ({
+            type: "POST",
+            dataType: "html",
+            url: pagina,
+            beforeSend: function () {
+                $("#dados").html("Carregando...");
+            },
+            data: {nome: nome},
+            success: function (msg) {
+                $("#dados").html(msg);
+            }
+        });
+    }
+    $("#buscar").click(function () {
+        buscar($("#nome").val());
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
