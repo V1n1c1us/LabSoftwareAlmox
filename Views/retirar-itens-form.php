@@ -54,7 +54,6 @@
                     ?>
                     </tbody>
                 </table>
-                <button class="btn btn-primary nextBtn pull-right" id="" type="button">Next</button>
             </div>
         </div>
     </div>
@@ -101,8 +100,6 @@
                 </div>
                 <button class="btn btn-success btn-md pull-left" id="enviaDados" type="button">Confirmar
                     Pedido
-                </button>
-                <button class="btn btn-danger btn-md pull-right " id="cancelaPedido" type="button">Cancelar Pedido
                 </button>
             </div>
             <div class="col-lg 4"></div>

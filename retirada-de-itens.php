@@ -100,9 +100,11 @@ include('funcoes/seguranca.php');
                             console.log("IF OK");
                             bootbox.alert({
                                 message: '<center><img src="logoPoli.png" width="100px"/></center><br/><h2 class="alert alert-success text-center">Pedido Efetuado com Sucesso</h2>',
+
                             });
-
-
+                            setTimeout(function(){
+                                document.location.href = 'retirada-de-itens.php';
+                            }, 3000);
                         } else {
                             console.log("ELSE OK");
                             bootbox.alert({

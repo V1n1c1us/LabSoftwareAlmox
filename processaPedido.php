@@ -11,57 +11,77 @@ $response = array();
 $SqlSelect = $conn->query("SELECT id,matricula,senha FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
 $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 
-if (empty($resultado)) {
-    $response["msgErro"] = "Credenciais invalidas!";
+if ($resultado > 0) {
 
-    echo json_encode($response, JSON_PRETTY_PRINT);
-} else {
-//    $response["status"] = "ok";
-//    $response["Produtos"] = $produtos;
-//    $response["TIPO:"] = $tipo;
-//    $response['debugs'] = "Sim, Debugs";
-//
-    //inicio da transação
-
-
-    $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo) values (?,current_timestamp,?)");
-    $SQLinsert->bindParam(1, $login);
-    $SQLinsert->bindParam(2, $tipo);
-    $SQLinsert->execute();
-
-
-    $SQLultimoId = $conn->query("SELECT CURRVAL('movimentacao_idmovimentacao_seq')");
-    $ultimo_id_movimentacao = $SQLultimoId->fetch(PDO::FETCH_COLUMN);
-
-    foreach ($produtos as $produto) {
-        $SQLinsert = $conn->prepare("INSERT INTO itens (codigoprodutoalmox,idMovimentacao,quantidade,tipo) values (?,?,?,?)");
-        $SQLinsert->bindParam(1, $produto["codigoProduto"]);
-        $SQLinsert->bindParam(2, $ultimo_id_movimentacao);
-        $SQLinsert->bindParam(3, $produto["quantidade"]);
-        $SQLinsert->bindParam(4, $tipo);
+    try {
+        $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo) values (?,current_timestamp,?)");
+        $SQLinsert->bindParam(1, $login);
+        $SQLinsert->bindParam(2, $tipo);
         $SQLinsert->execute();
-        $conn->errorInfo();
 
-        $SQLUpdate = "UPDATE produto SET quantidade = quantidade - ".$produto["quantidade"]." WHERE codigoprodutoalmox = ".$produto["codigoProduto"]."";
-        $stmt = $conn->prepare($SQLUpdate);
-        $stmt->execute();
+        $SQLultimoId = $conn->query("SELECT CURRVAL('movimentacao_idmovimentacao_seq')");
+        $ultimo_id_movimentacao = $SQLultimoId->fetch(PDO::FETCH_COLUMN);
+
+        $conn->beginTransaction();
+        foreach ($produtos as $produto) {
+            $SQLqtda = $conn->query("SELECT quantidade FROM produto WHERE codigoprodutoalmox = ".$produto['codigoProduto']."");
+            $qtda = $SQLqtda->fetch(PDO::FETCH_COLUMN);
+
+            if($qtda > 0){
+
+            $SQLinsert = $conn->prepare("INSERT INTO itens (codigoprodutoalmox,idMovimentacao,quantidade,tipo) values (?,?,?,?)");
+            $SQLinsert->bindParam(1, $produto["codigoProduto"]);
+            $SQLinsert->bindParam(2, $ultimo_id_movimentacao);
+            $SQLinsert->bindParam(3, $produto["quantidade"]);
+            $SQLinsert->bindParam(4, $tipo);
+            $SQLinsert->execute();
+            $conn->errorInfo();
+
+            $SQLSelectForUpdate = $conn->query("SELECT * FROM produto WHERE codigoprodutoalmox = " . $produto['codigoProduto'] . " FOR UPDATE");
+
+
+            $SQLUpdate = "UPDATE produto SET quantidade = quantidade - " . $produto["quantidade"] . " WHERE codigoprodutoalmox = " . $produto["codigoProduto"] . "";
+            $stmt = $conn->prepare($SQLUpdate);
+            $stmt->execute();
+            $conn->commit();
+            }else{
+                $response["msgErro"] = "Credenciais invalidas!";
+            }
+        }
 
         //$SQLUpdate = $conn->prepare("UPDATE produto SET quantidade = quantidade - 1 WHERE codigoprodutoalmox = 66)");
 //        $SQLUpdate->bindParam(1, $produto["quantidade"]);
 //        $SQLUpdate->bindParam(2,$produto["codigoProduto"]);
         //$SQLUpdate->execute();
+
+
+        $response["status"] = "ok";
+        $response["Produtos"] = $produtos;
+        $response["msgErro"] = "SUCESSO";
+        echo json_encode($response, JSON_PRETTY_PRINT);
+
+    } catch (Exception $ex) {
+        $conn->rollBack();
         $conn->errorInfo();
     }
-    $response["status"] = "ok";
-    $response["Produtos"] = $produtos;
-    $response["msgErro"] = "SUCESSO";
+} else {
+    $response["msgErro"] = "Credenciais invalidas!";
+
     echo json_encode($response, JSON_PRETTY_PRINT);
+}
+
+//    $response["status"] = "ok";
+//    $response["Produtos"] = $produtos;
+//    $response["TIPO:"] = $tipo;
+//    $response['debugs'] = "Sim, Debugs";
+//
+//inicio da transação
+
 //        //envia email
 //        $_destino = "v.f.diehl@gmail.com";
 //        $_assunto = "Confirmação do Pedido";
 //        $_mensagem = json_encode($response, JSON_PRETTY_PRINT);
 //        mail($_destino, $_assunto, $_mensagem);
-}
 
 
 //echo json_encode($response);

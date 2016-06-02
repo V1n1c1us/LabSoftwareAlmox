@@ -1,0 +1,13 @@
+{
+  "processing":     "Carregando...",
+  "lengthMenu": "Mostrar _MENU_ registros por página",
+  "zeroRecords": "Nenhum Usuário Encontrado",
+  "info": "Exibir _PAGE_ de _PAGES_ Páginas",
+  "infoEmpty": "No records available",
+  "infoFiltered": "(filtrada a partir de _MAX_ total de registros)",
+  "search": "Buscar Usuário",
+  "paginate": {
+    "previous": "Voltar",
+    "next": "Avançar"
+  }
+}

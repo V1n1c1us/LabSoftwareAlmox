@@ -41,7 +41,7 @@ include('funcoes/seguranca.php');
             var table = $('#tabelaUsuarios').DataTable({
                 "processing": true,
                 "language": {
-                    "url": "datatableTraducao.json",
+                    "url": "datatableTraducaoUser.json",
                 },
             });
         });
@@ -63,11 +63,11 @@ include('funcoes/seguranca.php');
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        <i class="fa fa-cart-arrow-down"></i> Retirar Itens
+                        <i class="fa fa-cart-arrow-down"></i> Listar Usuários
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="principal.php">Início</a></li>
-                        <li class="active">Retirar Itens</li>
+                        <li class="active">Listar Usuários</li>
                     </ol>
                 </div>
             </div>
