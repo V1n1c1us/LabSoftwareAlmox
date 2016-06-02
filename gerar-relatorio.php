@@ -5,6 +5,7 @@
  * Date: 07/04/2016
  * Time: 20:05
  */
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -49,46 +50,49 @@ session_start();
             <div class="row">
                 <div class="col-lg-12">
                     <!-- FORMULÁRIO -->
-                    <?php include('Views/relatorio-form.php'); ?>
+                    <form class="form-inline" action="Views/relatorio-form.php" method="post">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome">
+                        </div>
+                        <button type="submit" id="buscar" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="dados">Aqui aparece os dados da busca...</div>
-                </div>
-            </div>
+
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
     </div>
+
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
-<script>
-    function buscar(nome) {
-        var pagina = "relatorio-form.php";
-        $.ajax
-        ({
-            type: "POST",
-            dataType: "html",
-            url: pagina,
-            beforeSend: function () {
-                $("#dados").html("Carregando...");
-            },
-            data: {nome: nome},
-            success: function (msg) {
-                $("#dados").html(msg);
-            }
-        });
-    }
-    $("#buscar").click(function () {
-        buscar($("#nome").val());
-    });
-</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
+<!--<script>-->
+<!--    function buscar(nome) {-->
+<!--        var pagina = "Views/relatorio-form.php";-->
+<!--        $.ajax-->
+<!--        ({-->
+<!--            type: "POST",-->
+<!--            dataType: "html",-->
+<!--            url: pagina,-->
+<!--            beforeSend: function () {-->
+<!--                $("#dados").html("Carregando...");-->
+<!--            },-->
+<!--            data: {nome: nome},-->
+<!--            success: function (msg) {-->
+<!--                $("#dados").html(msg);-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--    $("#buscar").click(function () {-->
+<!--        buscar($("#nome").val());-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
 

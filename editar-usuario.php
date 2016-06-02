@@ -6,54 +6,67 @@
  * Time: 00:22
  */
 include("DB/connect.php");
-
-$id = $_GET['id'];
-$sql = $conn->query("SELECT * FROM usuario WHERE id = $id");
-//$sql = $conn->query("SELECT * FROM produto");
-
-while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
-
-
-    $nomeusuario = $linha->nomeusuario;
-    $matricula = $linha->matricula;
-    $email = $linha->email;
-    $siape = $linha->siape;
-    $tipo = $linha->tipo;
-    ?>
-
-    <form action="funcoes/editar-usuario.php" method="POST">
-        <?php
-        if (isset($matricula)) { ?>
-            <div class="form-group">
-                <label for="matricula">Matrícula</label>
-                <input type="text" class="form-control" id="matricula" placeholder="Matrícula" name="matricula"
-                       value="<?php echo $matricula; ?>">
-            </div>
-            <?php
-        }
-        ?>
-        <?php
-        if (isset($siape)) { ?>
-            <div class="form-group">
-                <label for="senha">Siape</label>
-                <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha"
-                       value="<?php echo $siape; ?>">
-            </div>
-            <?php
-        }
-        ?>
-        <div class="form-group">
-            <label for="nomeCompleto">Nome Completo</label>
-            <input type="text" class="form-control" id="nomeusuario" placeholder="Nome Completo" name="nomeusuario"
-                   value="<?php echo $nomeusuario; ?>">
-        </div>
-        <div class="form-group">
-            <label for="cpf">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
-        </div>
-
-        <button type="submit" class="btn btn-success">Cadastrar</button>
-    </form>
-    <?php
-}
+session_start();
+include('funcoes/seguranca.php');
 ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Colégio Politécnico - Almox</title>
+
+        <?php include('Views/links.php'); ?>
+        <?php include('Views/scripts.php'); ?>
+        <!--Mascaras INPUT-->
+        <script src="js/maskedinput.js"></script>
+        <script src="js/bootbox.min.js"></script>
+        <script>
+            jQuery(function ($) {
+                $("#cpf").mask("999.999.999-99");
+            });
+        </script>
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Navigation -->
+
+        <?php include('Views/header.php'); ?>
+
+        <?php include('Views/menu.php'); ?>
+
+    </nav>
+    <div id="wrapper">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            <i class="fa fa-user-plus"></i> Cadastro de Funcionário
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="principal.php">Início</a></li>
+                            <li class="active">Cadastro de Funcionário</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <?php include('Views/editar-usuario-form.php'); ?>
+                    </div>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+    </body>
+    </html>

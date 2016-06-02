@@ -9,7 +9,7 @@ include('../DB/connect.php');
 
 $id = $_GET['id'];
 $SQLDeleta = "DELETE FROM usuario WHERE id = ?";
-echo $SQLDeleta;
+
 $stmt = $conn->prepare($SQLDeleta);
 $stmt->bindParam(1,$id);
 
@@ -17,6 +17,6 @@ $stmt->bindParam(1,$id);
 if ($stmt->execute() == true) {
     echo "<script>alert('Deletado com Sucesso'); window.location='../listagem-usuarios.php';</script>";
 } else {
-    echo "<script>alert('Erro ao Deletar');</script>";
+    echo "<script>alert('Erro ao Deletar'); window.location='../listagem-usuarios.php';</script>";
 }
 ?>

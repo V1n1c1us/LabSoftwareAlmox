@@ -33,10 +33,8 @@
                     <tbody>
                     <?php
                     $sql = $conn->query("SELECT * FROM usuario");
-                    //$sql = $conn->query("SELECT * FROM produto");
 
                     while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
-
 
                     $idUsuario = $linha->id;
                     $nomeusuario = $linha->nomeusuario;
