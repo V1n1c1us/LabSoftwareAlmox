@@ -1,6 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
+ * User: Vinicius
+ * Date: 07/06/2016
+ * Time: 00:04
+ */
+?>
+<?php
+/**
+ * Created by PhpStorm.
  * User: 201221584
  * Date: 07/04/2016
  * Time: 20:05
@@ -17,7 +25,41 @@ session_start();
     <title>Colégio Politécnico - Almox</title>
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
+    <script>
+        $(function () {
+            $("#busca").keyup(function () {
+                var pesquisa = $(this).val();
+                console.log("***" + pesquisa);
+                //$(".resultados").html(pesquisa);
 
+                if(pesquisa != ''){
+                    var dados = {
+                        palavra : pesquisa
+                    }
+                    $.post('Views/busca.php', dados, function(retorna){
+                        $(".resultados").html(retorna);
+                    });
+                }
+            });
+
+            $('#form-pesquisa').submit(function(e){
+                e.preventDefault();
+                var pesquisa = $("#busca").val();
+
+                if(pesquisa == ''){
+                    alert('Informe sua Pesquisa');
+                }else{
+                    var dados = {
+                        palavra : pesquisa
+                    }
+                    $.post('Views/busca.php', dados, function(retorna){
+                        $('.resultados').html(retorna);
+                    });
+                }
+            });
+        });
+
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -50,22 +92,18 @@ session_start();
                 <div class="col-lg-12">
 
                     <!-- FORMULÁRIO -->
-                    <form class="form-inline" action="Views/relatorio-form.php" method="post" enctype="multipart/form-data">
+                    <form id="form-pesquisa" class="form-inline" action="Views/busca.php" method="post">
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome" name="nomeusuario">
+                            <input type="text" class="form-control" id="busca" placeholder="Nome" name="nomeusuario">
                         </div>
-                        <div class="form-group">
-                            <label for="nome">data</label>
-                            <input type="datetime" class="form-control" id="nome" placeholder="Nome" name="datahora">
-                        </div>
-                        <button type="submit" id="buscar" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i></button>
                     </form>
+                </div>
+                <div class="resultados col-lg-12">
 
                 </div>
-                <div class="co"
             </div>
-
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
@@ -78,29 +116,10 @@ session_start();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!--<script>-->
-<!--    function buscar(nome) {-->
-<!--        var pagina = "Views/relatorio-form.php";-->
-<!--        $.ajax-->
-<!--        ({-->
-<!--            type: "POST",-->
-<!--            dataType: "html",-->
-<!--            url: pagina,-->
-<!--            beforeSend: function () {-->
-<!--                $("#dados").html("Carregando...");-->
-<!--            },-->
-<!--            data: {nome: nome},-->
-<!--            success: function (msg) {-->
-<!--                $("#dados").html(msg);-->
-<!--            }-->
-<!--        });-->
-<!--    }-->
-<!--    $("#buscar").click(function () {-->
-<!--        buscar($("#nome").val());-->
-<!--    });-->
-<!--</script>-->
+
 </body>
 </html>
+
 
 
 
