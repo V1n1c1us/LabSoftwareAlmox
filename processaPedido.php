@@ -8,7 +8,7 @@ $senha = $_POST['senha'];
 $tipo = $_POST['tipo'];
 
 $response = array();
-$SqlSelect = $conn->query("SELECT id,matricula,senha FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
+$SqlSelect = $conn->query("SELECT id,matricula,senha,siape FROM USUARIO WHERE matricula = '$login' and senha = '$senha'");
 $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 
 if ($resultado > 0) {

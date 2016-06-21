@@ -95,9 +95,10 @@ session_start();
                     <form id="form-pesquisa" class="form-inline" action="Views/busca.php" method="post">
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="busca" placeholder="Nome" name="nomeusuario">
+                            <input type="text" class="form-control" id="busca" placeholder="Nome" name="palavra">
                         </div>
                         <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i></button>
+                        Total: <span id="total"></span>
                     </form>
                 </div>
                 <div class="resultados col-lg-12">
