@@ -14,7 +14,7 @@ $pesquisa = $_POST['palavra'];
 $sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.idmovimentacao AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.nomeusuario LIKE  '%".$pesquisa."' ORDER BY datahora";
 
 $select = $conn->prepare($sql);
-$select->execute() or die("Erro ao pesquisar");
+$select->execute() or die("<div class='alert alert-danger'>Erro ao pesquisar</div>");
 $row = $select->rowCount();
 
 if ($row <= 0) {

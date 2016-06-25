@@ -40,13 +40,13 @@
                             <td><?php echo $descricaoProduto; ?></td>
                             <td class="text-center"><?php echo $unidade; ?></td>
 
-                                <?php if ($quantidade <= 5) {
-                                    echo '<td class="text-center alert alert-danger" data-toggle="tooltip" data-placement="top"
-                        title="Estoque Baixo"><b>'. $quantidade .'</b></td>';
-                                } else{
-                                    echo '<td class="text-center"><b>'. $quantidade .'</b></td>';
-                                }
-                                ?>
+                            <?php if ($quantidade <= 5) {
+                                echo '<td class="text-center alert alert-danger" data-toggle="tooltip" data-placement="top"
+                        title="Estoque Baixo"><b>' . $quantidade . '</b></td>';
+                            } else {
+                                echo '<td class="text-center"><b>' . $quantidade . '</b></td>';
+                            }
+                            ?>
                             </td>
                         </tr>
                         <?php
@@ -84,6 +84,26 @@
                 </tr>
                 </tfoot>
             </table>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="form-inline">
+                    <div class="form-group text-center">
+                        <label class="control-label">SIAPE</label>
+                        <input type="radio" required="required" class="form-control"
+                               placeholder="Login" id="campoTipoUsuario" name="tipoUsuario" value="1"
+                               required style="width: 25px;"/>
+                        <label class="control-label">Matrícula Bolsista</label>
+                        <input type="radio" required="required" class="form-control"
+                               placeholder="Login" id="campoTipoUsuario" name="tipoUsuario" value="3" required style="width: 25px;"/>
+                        <label class="control-label">Matrícula Funcionário</label>
+                        <input type="radio" required="required" class="form-control"
+                               placeholder="Login" id="campoTipoUsuario" name="tipoUsuario" value="2" required style="width: 25px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
         </div>
         <div class="row">
             <div class="col-lg-4"></div>
