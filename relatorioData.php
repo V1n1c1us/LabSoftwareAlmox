@@ -28,31 +28,39 @@ session_start();
     <script>
         $(function () {
             $("#busca").keyup(function () {
-                var pesquisa = $(this).val();
-                console.log("***" + pesquisa);
+                var busca = $(this).val();
+                var pesquisaInicial = $(this).val();
+                var pesquisaFinal = $(this).val();
+                console.log("***" + pesquisaInicial);
+                console.log("***" + pesquisaFinal);
                 //$(".resultados").html(pesquisa);
 
-                if(pesquisa != ''){
+                if (busca != '' && pesquisaInicial != '' && pesquisaFinal != '') {
                     var dados = {
-                        palavra : pesquisa
+                        busca: busca,
+                        dataInicial: pesquisaInicial,
+                        dataFinal: pesquisaFinal
                     }
-                    $.post('Views/buscaUsuario.php', dados, function(retorna){
+                    $.post('Views/buscaData.php', dados, function (retorna) {
                         $(".resultados").html(retorna);
                     });
                 }
             });
 
-            $('#form-pesquisa').submit(function(e){
+            $('#form-pesquisa').submit(function (e) {
                 e.preventDefault();
-                var pesquisa = $("#busca").val();
-
-                if(pesquisa == ''){
+                var busca = $("#busca").val();
+                var pesquisaInicial = $("#buscaInicial").val();
+                var pesquisaFinal = $("#buscaFinal").val();
+                if (busca == '' && pesquisaInicial == '' && pesquisaFinal == '') {
                     alert('Informe sua Pesquisa');
-                }else{
+                } else {
                     var dados = {
-                        palavra : pesquisa
+                        busca : busca,
+                        dataInicial: pesquisaInicial,
+                        dataFinal: pesquisaFinal
                     }
-                    $.post('Views/buscaUsuario.php', dados, function(retorna){
+                    $.post('Views/buscaData.php', dados, function (retorna) {
                         $('.resultados').html(retorna);
                     });
                 }
@@ -92,13 +100,33 @@ session_start();
                 <div class="col-lg-12">
 
                     <!-- FORMULÁRIO -->
-                    <form id="form-pesquisa" class="form-inline" action="Views/buscaUsuario.php" method="post">
+                    <form id="form-pesquisa" class="form-inline" action="Views/buscaData.php" method="post">
+                        <?php
+                        include ("DB/connect.php");
+                        $id = $_GET['id'];
+                        $sql = $conn->query("SELECT * FROM usuario WHERE id = $id");
+
+                        while ($linha = $sql->fetch(PDO::FETCH_OBJ)) {
+                            $id = $linha->id;
+                            $matricula = $linha->matricula;
+                            ?>
+                            <div class="form-group">
+                                <label for="dataInicial">Data Inícial</label>
+                                <input type="text" class="form-control hidden" id="busca" placeholder="De" name="id" value="<?php echo $id?>"
+                                       >
+                            </div>
+                            <?php
+                        }
+                        ?>
                         <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="busca" placeholder="Nome" name="palavra">
+                            <label for="dataInicial">Data Inícial</label>
+                            <input type="date" class="form-control" id="buscaInicial" placeholder="De" name="dataInicial">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataFinal">Data Final</label>
+                            <input type="date" class="form-control" id="buscaFinal" placeholder="Até" name="dataFinal">
                         </div>
                         <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i></button>
-                        Total: <span id="total"></span>
                     </form>
                 </div>
                 <div class="resultados col-lg-12">

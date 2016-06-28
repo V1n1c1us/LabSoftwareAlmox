@@ -11,7 +11,7 @@ include('../DB/connect.php');
 
 $pesquisa = $_POST['palavra'];
 
-$sql = "SELECT id,nomeusuario FROM usuario WHERE usuario.nomeusuario LIKE  '%".$pesquisa."'";
+$sql = "SELECT * FROM usuario WHERE usuario.nomeusuario LIKE  '%".$pesquisa."'";
 
 $select = $conn->prepare($sql);
 $select->execute() or die("<div class='alert alert-danger'>Erro ao pesquisar</div>");
@@ -31,7 +31,7 @@ if ($row <= 0) {
     while ($linha = $select->fetch()) {
         echo '<tr>';
         echo '<td class="text-center">' . $linha["nomeusuario"] . '</td>';
-        echo '<td class="text-center"><a class="btn btn-default" href='. $linha["id"].'><i class="fa fa-search"></i></a></td>';
+        echo '<td class="text-center"><a class="btn btn-default" href="relatorioData.php?id='.$linha["id"].'"><i class="fa fa-search"></i></a></td>';
         echo '</tr>';
        }
     }
