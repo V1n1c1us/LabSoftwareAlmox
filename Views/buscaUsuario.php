@@ -11,7 +11,7 @@ include('../DB/connect.php');
 
 $pesquisa = $_POST['palavra'];
 
-$sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.idmovimentacao AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.nomeusuario LIKE  '%".$pesquisa."' ORDER BY datahora";
+$sql = "SELECT id,nomeusuario FROM usuario WHERE usuario.nomeusuario LIKE  '%".$pesquisa."'";
 
 $select = $conn->prepare($sql);
 $select->execute() or die("<div class='alert alert-danger'>Erro ao pesquisar</div>");
@@ -23,22 +23,17 @@ if ($row <= 0) {
 ?>
 <table class="table table-bordered" id="tabela">
     <tr>
-        <th>Nome</th>
-        <th>Data</th>
-        <th>Descrição</th>
-        <th>Quantidade</th>
+        <th class="text-center">Nome</th>
+        <th class="text-center"><i class="fa fa-cog"></i></th>
     </tr>
     <?php
     echo '<p class="alert alert-success"> Número de Registros Encontrados <b>('.$row.')</b> com o nome de: <b>('.$pesquisa.')</b></p>';
     while ($linha = $select->fetch()) {
         echo '<tr>';
-        echo '<td>' . $linha["nomeusuario"] . '</td>';
-        echo '<td>' . $linha["datahora"] . '</td>';
-        echo '<td>' . $linha["descricaoproduto"] . '</td>';
-        echo '<td>' . $linha["quantidade"] . '</td>';
+        echo '<td class="text-center">' . $linha["nomeusuario"] . '</td>';
+        echo '<td class="text-center"><a class="btn btn-default" href='. $linha["id"].'><i class="fa fa-search"></i></a></td>';
         echo '</tr>';
        }
     }
     ?>
-    Total: <span id="total"></span>
 </table>

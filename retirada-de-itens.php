@@ -87,7 +87,7 @@ include('funcoes/seguranca.php');
                     tipo: "saida",
                     login: $("#campoLogin").val(),
                     senha: $("#campoSenha").val(),
-                    tipoUsuario: $("#campoTipoUsuario").val()
+                    //tipoUsuario: $("#campoTipoUsuario").val()
                 }, function (data) {
                     try {
                         console.log("entrou no try");

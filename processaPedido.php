@@ -3,19 +3,20 @@ include "DB/connect.php";
 $produtos = @$_POST['produtos'];
 $login = $_POST['login'];
 $senha = $_POST['senha'];
-$tipoUsuario = $_POST['tipoUsuario'];
+//$tipoUsuario = $_POST['tipoUsuario'];
 $tipo = $_POST['tipo'];
 $response = array();
-$sql = "SELECT id,matricula,senha,siape FROM USUARIO WHERE matricula = '$login' and senha = '$senha' and tipo = '$tipoUsuario'";
-echo $sql;
+//$sql = "SELECT id,matricula,senha,siape FROM USUARIO WHERE matricula = '$login' and senha = '$senha' and tipo = '$tipoUsuario'";
+$sql = "SELECT id,matricula,senha,siape,tipo FROM USUARIO WHERE matricula = '$login' and senha = '$senha'";
+//echo $sql;
 $SqlSelect = $conn->query($sql);
 $resultado = $SqlSelect->fetch(PDO::FETCH_ASSOC);
 if ($resultado > 0) {
     try {
-        $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo, tipousuario) values (?,current_timestamp,?,?)");
+        $SQLinsert = $conn->prepare("INSERT INTO movimentacao (matricula,datahora,tipo) values (?,current_timestamp,?)");
         $SQLinsert->bindParam(1, $login);
         $SQLinsert->bindParam(2, $tipo);
-        $SQLinsert->bindParam(3, $tipoUsuario);
+//        $SQLinsert->bindParam(3, $tipoUsuario);
 
 
         $SQLinsert->execute();

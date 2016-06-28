@@ -1,6 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
+ * User: Vinicius
+ * Date: 07/06/2016
+ * Time: 00:04
+ */
+?>
+<?php
+/**
+ * Created by PhpStorm.
  * User: 201221584
  * Date: 07/04/2016
  * Time: 20:05
@@ -15,16 +23,52 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Colégio Politécnico - Almox</title>
+    <?php include('Views/links.php'); ?>
+    <?php include('Views/scripts.php'); ?>
+    <script>
+        $(function () {
+            $("#busca").keyup(function () {
+                var pesquisa = $(this).val();
+                console.log("***" + pesquisa);
+                //$(".resultados").html(pesquisa);
 
+                if(pesquisa != ''){
+                    var dados = {
+                        palavra : pesquisa
+                    }
+                    $.post('Views/busca.php', dados, function(retorna){
+                        $(".resultados").html(retorna);
+                    });
+                }
+            });
+
+            $('#form-pesquisa').submit(function(e){
+                e.preventDefault();
+                var pesquisa = $("#busca").val();
+
+                if(pesquisa == ''){
+                    alert('Informe sua Pesquisa');
+                }else{
+                    var dados = {
+                        palavra : pesquisa
+                    }
+                    $.post('Views/busca.php', dados, function(retorna){
+                        $('.resultados').html(retorna);
+                    });
+                }
+            });
+        });
+
+    </script>
 </head>
 <body>
 <div id="wrapper">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Navigation -->
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap.css" rel="stylesheet">
+        <?php include('Views/header.php'); ?>
 
+        <?php include('Views/menu.php'); ?>
 
     </nav>
     <div id="page-wrapper">
@@ -47,49 +91,18 @@ session_start();
             <div class="row">
                 <div class="col-lg-12">
 
-                    <table class="table table-bordered" border="1">
-                        <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Desc</th>
-                            <th>Data/Hora</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        include('../DB/connect.php');
+                    <!-- FORMULÁRIO -->
+                    <form id="form-pesquisa" class="form-inline" action="Views/busca.php" method="post">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="busca" placeholder="Nome" name="palavra">
+                        </div>
+                        <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i></button>
+                        Total: <span id="total"></span>
+                    </form>
+                </div>
+                <div class="resultados col-lg-12">
 
-                        @$nome = $_POST["nomeusuario"];
-
-                        $sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.iditens AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.nomeusuario LIKE '%".$nome."%' ORDER BY datahora";
-
-                        //$sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.iditens AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.nomeusuario = LIKE '%$nome%'";
-                        $select = $conn->prepare($sql);
-                        $select->execute();
-                        $row = $select->rowCount();
-
-                        if ($row > 0) {
-                            while ($linha = $select->fetchObject()) {
-                                $nomeusuario = $linha->nomeusuario;
-                                $dd = $linha->descricaoproduto;
-                                $dataHora = $linha->datahora;
-                                ?>
-
-                                <tr>
-                                    <td><?php echo $nomeusuario; ?></td>
-                                    <td><?php echo $dd; ?></td>
-                                    <td><?php echo $dataHora; ?></td>
-                                </tr>
-
-
-                                <?php
-                            }
-                        } else {
-                            echo "<h1>NADA</h1>";
-                        }
-                        ?>
-                        </tbody>
-                    </table>
                 </div>
             </div>
             <!-- /.row -->
@@ -107,27 +120,6 @@ session_start();
 
 </body>
 </html>
-
-
-<?php
-/**
- * Created by PhpStorm.
- * User: 201221584
- * Date: 07/04/2016
- * Time: 20:04
- */
-
-//$sql = $conn->query("SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.iditens AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.matricula LIKE '%$nome%'");
-
-
-?>
-
-
-
-
-
-
-
 
 
 
