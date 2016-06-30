@@ -25,49 +25,49 @@ session_start();
     <title>Colégio Politécnico - Almox</title>
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
-    <script>
-        $(function () {
-            $("#busca").keyup(function () {
-                var busca = $(this).val();
-                var pesquisaInicial = $(this).val();
-                var pesquisaFinal = $(this).val();
-                console.log("***" + pesquisaInicial);
-                console.log("***" + pesquisaFinal);
-                //$(".resultados").html(pesquisa);
-
-                if (busca != '' && pesquisaInicial != '' && pesquisaFinal != '') {
-                    var dados = {
-                        busca: busca,
-                        dataInicial: pesquisaInicial,
-                        dataFinal: pesquisaFinal
-                    }
-                    $.post('Views/buscaData.php', dados, function (retorna) {
-                        $(".resultados").html(retorna);
-                    });
-                }
-            });
-
-            $('#form-pesquisa').submit(function (e) {
-                e.preventDefault();
-                var busca = $("#busca").val();
-                var pesquisaInicial = $("#buscaInicial").val();
-                var pesquisaFinal = $("#buscaFinal").val();
-                if (busca == '' && pesquisaInicial == '' && pesquisaFinal == '') {
-                    alert('Informe sua Pesquisa');
-                } else {
-                    var dados = {
-                        busca : busca,
-                        dataInicial: pesquisaInicial,
-                        dataFinal: pesquisaFinal
-                    }
-                    $.post('Views/buscaData.php', dados, function (retorna) {
-                        $('.resultados').html(retorna);
-                    });
-                }
-            });
-        });
-
-    </script>
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            $("#busca").keyup(function () {-->
+<!--                var busca = $(this).val();-->
+<!--                var pesquisaInicial = $(this).val();-->
+<!--                var pesquisaFinal = $(this).val();-->
+<!--                console.log("***" + pesquisaInicial);-->
+<!--                console.log("***" + pesquisaFinal);-->
+<!--                //$(".resultados").html(pesquisa);-->
+<!---->
+<!--                if (busca != '' && pesquisaInicial != '' && pesquisaFinal != '') {-->
+<!--                    var dados = {-->
+<!--                        busca: busca,-->
+<!--                        dataInicial: pesquisaInicial,-->
+<!--                        dataFinal: pesquisaFinal-->
+<!--                    }-->
+<!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
+<!--                        $(".resultados").html(retorna);-->
+<!--                    });-->
+<!--                }-->
+<!--            });-->
+<!---->
+<!--            $('#form-pesquisa').submit(function (e) {-->
+<!--                e.preventDefault();-->
+<!--                var busca = $("#busca").val();-->
+<!--                var pesquisaInicial = $("#buscaInicial").val();-->
+<!--                var pesquisaFinal = $("#buscaFinal").val();-->
+<!--                if (busca == '' && pesquisaInicial == '' && pesquisaFinal == '') {-->
+<!--                    alert('Informe sua Pesquisa');-->
+<!--                } else {-->
+<!--                    var dados = {-->
+<!--                        busca : busca,-->
+<!--                        dataInicial: pesquisaInicial,-->
+<!--                        dataFinal: pesquisaFinal-->
+<!--                    }-->
+<!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
+<!--                        $('.resultados').html(retorna);-->
+<!--                    });-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!---->
+<!--    </script>-->
 </head>
 <body>
 <div id="wrapper">
