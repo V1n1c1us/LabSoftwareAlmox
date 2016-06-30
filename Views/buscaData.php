@@ -65,8 +65,9 @@ session_start();
                     } else {
                     ?>
                     <form method="post" action="../funcoes/relatorioUsuario.php">
-                    <a href="../funcoes/relatorioUsuario.php?nomeusuario=<?php echo $id?>" class="btn btn-default" style="margin-bottom: 20px;"><i class="fa fa-print"></i>PDF</a>
+                    <a href="../funcoes/relatorioUsuario.php?id=<?php echo $id?>" class="btn btn-default" style="margin-bottom: 20px;"><i class="fa fa-print"></i> PDF</a>
                     </form>
+
                     <table class="table table-bordered" id="tabela">
                         <tr>
                             <th>Nome</th>
@@ -75,11 +76,11 @@ session_start();
                             <th>Quantidade</th>
                         </tr>
                         <?php
-                        echo '<p class="alert alert-success"> Número de Registros Encontrados <b>(' . $row . ')</b> no período de: <i class="fa fa-calendar"></i><b>(' . $dataInicial . ') a ('. $dataFinal.')</b></p>';
+                        echo '<p class="alert alert-success"> Número de Registros Encontrados <b>(' . $row . ')</b> no período de: <i class="fa fa-calendar"></i> <b>(' . date("d/m/Y", strtotime($dataInicial)) . ') a ('. date("d/m/Y", strtotime($dataFinal)).')</b></p>';
                         while ($linha = $select->fetch()) {
                             echo '<tr>';
                             echo '<td>' . $linha["nomeusuario"] . '</td>';
-                            echo '<td>' . $linha["datahora"] . '</td>';
+                            echo '<td>' . date("d/m/Y", strtotime($linha["datahora"])) . '</td>';
                             echo '<td>' . $linha["descricaoproduto"] . '</td>';
                             echo '<td>' . $linha["quantidade"] . '</td>';
                             echo '</tr>';
