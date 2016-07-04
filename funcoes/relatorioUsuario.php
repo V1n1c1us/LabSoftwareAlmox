@@ -9,11 +9,11 @@ session_start();
 include "../DB/connect.php";
 include "fpdf/fpdf.php";
 
-$id = 1;
-$dataInicial = '2016-05-01 11:42:56.536732';
-$dataFinal = '2016-06-01 22:47:54.478516';
+$id = $_GET['id'];
+$dataInicial = $_POST['dataInicial'];
+$dataFinal = $_POST['dataFinal'];
 
-$sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.idmovimentacao AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.id = '$id' AND movimentacao.datahora BETWEEN  '$dataInicial' AND '$dataFinal'  ORDER BY datahora ";
+$sql = "SELECT nomeusuario, datahora, descricaoproduto, itens.quantidade FROM usuario, itens, produto, movimentacao WHERE usuario.matricula = movimentacao.matricula AND movimentacao.idmovimentacao = itens.idmovimentacao AND produto.codigoprodutoalmox = itens.codigoprodutoalmox AND usuario.id = $id AND movimentacao.datahora BETWEEN  $dataInicial AND $dataFinal  ORDER BY datahora ";
 $select = $conn->query($sql);
 
 function converterSimbolos($string)

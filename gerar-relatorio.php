@@ -92,7 +92,7 @@ session_start();
                 <div class="col-lg-12">
 
                     <!-- FORMULÁRIO -->
-                    <form id="form-pesquisa" class="form-inline" action="Views/buscaUsuario.php" method="post">
+                    <form id="form-pesquisa" class="form-inline">
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="busca" placeholder="Nome" name="palavra">

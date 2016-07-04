@@ -25,49 +25,49 @@ session_start();
     <title>Colégio Politécnico - Almox</title>
     <?php include('Views/links.php'); ?>
     <?php include('Views/scripts.php'); ?>
-<!--    <script>-->
-<!--        $(function () {-->
-<!--            $("#busca").keyup(function () {-->
-<!--                var busca = $(this).val();-->
-<!--                var pesquisaInicial = $(this).val();-->
-<!--                var pesquisaFinal = $(this).val();-->
-<!--                console.log("***" + pesquisaInicial);-->
-<!--                console.log("***" + pesquisaFinal);-->
-<!--                //$(".resultados").html(pesquisa);-->
-<!---->
-<!--                if (busca != '' && pesquisaInicial != '' && pesquisaFinal != '') {-->
-<!--                    var dados = {-->
-<!--                        busca: busca,-->
-<!--                        dataInicial: pesquisaInicial,-->
-<!--                        dataFinal: pesquisaFinal-->
-<!--                    }-->
-<!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
-<!--                        $(".resultados").html(retorna);-->
-<!--                    });-->
-<!--                }-->
-<!--            });-->
-<!---->
-<!--            $('#form-pesquisa').submit(function (e) {-->
-<!--                e.preventDefault();-->
-<!--                var busca = $("#busca").val();-->
-<!--                var pesquisaInicial = $("#buscaInicial").val();-->
-<!--                var pesquisaFinal = $("#buscaFinal").val();-->
-<!--                if (busca == '' && pesquisaInicial == '' && pesquisaFinal == '') {-->
-<!--                    alert('Informe sua Pesquisa');-->
-<!--                } else {-->
-<!--                    var dados = {-->
-<!--                        busca : busca,-->
-<!--                        dataInicial: pesquisaInicial,-->
-<!--                        dataFinal: pesquisaFinal-->
-<!--                    }-->
-<!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
-<!--                        $('.resultados').html(retorna);-->
-<!--                    });-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!---->
-<!--    </script>-->
+    <!--    <script>-->
+    <!--        $(function () {-->
+    <!--            $("#busca").keyup(function () {-->
+    <!--                var busca = $(this).val();-->
+    <!--                var pesquisaInicial = $(this).val();-->
+    <!--                var pesquisaFinal = $(this).val();-->
+    <!--                console.log("***" + pesquisaInicial);-->
+    <!--                console.log("***" + pesquisaFinal);-->
+    <!--                //$(".resultados").html(pesquisa);-->
+    <!---->
+    <!--                if (busca != '' && pesquisaInicial != '' && pesquisaFinal != '') {-->
+    <!--                    var dados = {-->
+    <!--                        busca: busca,-->
+    <!--                        dataInicial: pesquisaInicial,-->
+    <!--                        dataFinal: pesquisaFinal-->
+    <!--                    }-->
+    <!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
+    <!--                        $(".resultados").html(retorna);-->
+    <!--                    });-->
+    <!--                }-->
+    <!--            });-->
+    <!---->
+    <!--            $('#form-pesquisa').submit(function (e) {-->
+    <!--                e.preventDefault();-->
+    <!--                var busca = $("#busca").val();-->
+    <!--                var pesquisaInicial = $("#buscaInicial").val();-->
+    <!--                var pesquisaFinal = $("#buscaFinal").val();-->
+    <!--                if (busca == '' && pesquisaInicial == '' && pesquisaFinal == '') {-->
+    <!--                    alert('Informe sua Pesquisa');-->
+    <!--                } else {-->
+    <!--                    var dados = {-->
+    <!--                        busca : busca,-->
+    <!--                        dataInicial: pesquisaInicial,-->
+    <!--                        dataFinal: pesquisaFinal-->
+    <!--                    }-->
+    <!--                    $.post('Views/buscaData.php', dados, function (retorna) {-->
+    <!--                        $('.resultados').html(retorna);-->
+    <!--                    });-->
+    <!--                }-->
+    <!--            });-->
+    <!--        });-->
+    <!---->
+    <!--    </script>-->
 </head>
 <body>
 <div id="wrapper">
@@ -102,7 +102,7 @@ session_start();
                     <!-- FORMULÁRIO -->
                     <form id="form-pesquisa" class="form-inline" action="Views/buscaData.php" method="post">
                         <?php
-                        include ("DB/connect.php");
+                        include("DB/connect.php");
                         $id = $_GET['id'];
                         $sql = $conn->query("SELECT * FROM usuario WHERE id = $id");
 
@@ -112,21 +112,23 @@ session_start();
                             ?>
                             <div class="form-group">
                                 <label for="dataInicial">Data Inícial</label>
-                                <input type="text" class="form-control hidden" id="busca" placeholder="De" name="id" value="<?php echo $id?>"
-                                       >
+                                <input type="text" class="form-control hidden" id="busca" placeholder="De" name="id"
+                                       value="<?php echo $id ?>">
                             </div>
                             <?php
                         }
                         ?>
                         <div class="form-group">
                             <label for="dataInicial">Data Inícial</label>
-                            <input type="date" class="form-control" id="buscaInicial" placeholder="De" name="dataInicial">
+                            <input type="date" class="form-control" id="buscaInicial" placeholder="De"
+                                   name="dataInicial">
                         </div>
                         <div class="form-group">
                             <label for="dataFinal">Data Final</label>
                             <input type="date" class="form-control" id="buscaFinal" placeholder="Até" name="dataFinal">
                         </div>
-                        <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-default" type="submit" name="enviar"><i class="fa fa-search"></i>
+                        </button>
                     </form>
                 </div>
                 <div class="resultados col-lg-12">

@@ -18,6 +18,8 @@ session_start();
     <link rel="stylesheet" href="../css/sb-admin.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
 </head>
 <body>
 <div id="wrapper">
@@ -64,8 +66,11 @@ session_start();
                         echo "<p class='alert alert-danger'>Número de Registros Encontrados <b>($row)</b> com o nome de: <b>($dataInicial)</b></p>";
                     } else {
                     ?>
-                    <form method="post" action="../funcoes/relatorioUsuario.php">
-                    <a href="../funcoes/relatorioUsuario.php?id=<?php echo $id?>" class="btn btn-default" style="margin-bottom: 20px;"><i class="fa fa-print"></i> PDF</a>
+                    <form method="post" action="../funcoes/relatorioUsuario.php?id=<?php echo $id,$dataInicial,$dataFinal?>">
+                        <input type="date" class="hidden" value="<?php echo $dataInicial?>">
+                        <input type="date" class="hidden" value="<?php echo $dataFinal?>">
+                        <button class="btn btn-default" type="submit"
+                           style="margin-bottom: 20px;"><i class="fa fa-print"></i> PDF</button>
                     </form>
 
                     <table class="table table-bordered" id="tabela">
@@ -76,17 +81,25 @@ session_start();
                             <th>Quantidade</th>
                         </tr>
                         <?php
-                        echo '<p class="alert alert-success"> Número de Registros Encontrados <b>(' . $row . ')</b> no período de: <i class="fa fa-calendar"></i> <b>(' . date("d/m/Y", strtotime($dataInicial)) . ') a ('. date("d/m/Y", strtotime($dataFinal)).')</b></p>';
+                        echo '<p class="alert alert-success"> Número de Registros Encontrados <b>(' . $row . ')</b> no período de: <i class="fa fa-calendar"></i> <b>(' . date("d/m/Y", strtotime($dataInicial)) . ') a (' . date("d/m/Y", strtotime($dataFinal)) . ')</b></p>';
                         while ($linha = $select->fetch()) {
                             echo '<tr>';
                             echo '<td>' . $linha["nomeusuario"] . '</td>';
                             echo '<td>' . date("d/m/Y", strtotime($linha["datahora"])) . '</td>';
                             echo '<td>' . $linha["descricaoproduto"] . '</td>';
-                            echo '<td>' . $linha["quantidade"] . '</td>';
+                            echo '<td class="qtda">' . $linha["quantidade"] . '</td>';
                             echo '</tr>';
                         }
                         }
                         ?>
+                        <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b class="pull-right">TOTAL:</b></td>
+                            <td id="resultado"></td>
+                        </tr>
+                        </tfoot>
                     </table>
 
                 </div>
@@ -103,7 +116,15 @@ session_start();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script>
+    $(function () {
+        var soma = 0;
+        $(".qtda").each(function () {
+            soma += Number($(this).html());
+        });
+        $("#resultado").text(soma);
+    });
+</script>
 </body>
 </html>
 
