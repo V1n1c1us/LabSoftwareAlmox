@@ -11,7 +11,7 @@ include('../DB/connect.php');
 
 $pesquisa = $_POST['palavra'];
 
-$sql = "SELECT * FROM usuario WHERE usuario.nomeusuario LIKE  '%".$pesquisa."'";
+$sql = "SELECT * FROM usuario WHERE usuario.nomeusuario LIKE  '%".$pesquisa."%'";
 
 $select = $conn->prepare($sql);
 $select->execute() or die("<div class='alert alert-danger'>Erro ao pesquisar</div>");

@@ -66,7 +66,7 @@ session_start();
                         echo "<p class='alert alert-danger'>Número de Registros Encontrados <b>($row)</b> com o nome de: <b>($dataInicial)</b></p>";
                     } else {
                     ?>
-                    <form method="post" action="../funcoes/relatorioUsuario.php?id=<?php echo $id,$dataInicial,$dataFinal?>">
+                    <form method="post" action="../funcoes/relatorioUsuario.php?id=<?php echo $id?>&dataInicial=<?php echo $dataInicial; ?>&dataFinal=<?php echo $dataFinal;?>">
                         <input type="date" class="hidden" value="<?php echo $dataInicial?>">
                         <input type="date" class="hidden" value="<?php echo $dataFinal?>">
                         <button class="btn btn-default" type="submit"

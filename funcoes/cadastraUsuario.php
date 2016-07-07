@@ -52,7 +52,7 @@ if ($_GET['funcao'] == 'cadastraServidor') {
     //inicio da transação
     $conn->beginTransaction();
 
-    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,siape,email,cpf,tipo,senha,sala) VALUES (?,?,?,?,?,?,?)");
+    $sqlInsert = $conn->prepare("INSERT INTO usuario (nomeusuario,matricula,siape,email,cpf,tipo,senha,sala) VALUES (?,$siape,?,?,?,?,?,?)");
     $sqlInsert->bindParam(1, $nomeusuario);
     $sqlInsert->bindParam(2, $siape);
     $sqlInsert->bindParam(3, $email);
